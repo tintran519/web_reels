@@ -1,0 +1,93 @@
+<div ng-hide="showMe">
+  <div class="jumbotron">
+    <h2 id="subHeader">See what's next.</h2>
+    <p>WATCH ANYWHERE.CANCEL ANYTIME</p>
+    <p>
+      <button class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register">
+        Register
+      </button>
+    </p>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="login" tabindex="-1" aria-hidden="true" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" align="center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <p>Web Reels</p>
+        </div>
+        <div id="forms">
+          <!-- Login Form -->
+          <form id="login-form">
+            <div class="modal-body">
+              <input type="text" id="username" class="form-control" placeholder="username">
+              <input type="password" id="password" class="form-control" placeholder="password" required>
+            </div>
+            <div class="modal-footer">
+              <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="register"  aria-hidden="true" style="display:none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" align="center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+          <p>Web Reels</p>
+        </div>
+
+        <div id=" register-forms">
+          <!-- Register Form -->
+          <form action="" id="register-form">
+            <div class="modal-body">
+              <input type="text" id="register-username" class="form-control" placeholder="username">
+              <input type="email" id="register-email" class="form-control" placeholder="email" required>
+              <input type="password" id="register-password" class="form-control" placeholder="password" required>
+            </div>
+            <div class="modal-footer">
+              <div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show="showMe" ng-controller="HomeController" class="jumbotron home">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1>Interstellar</h1>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <button ng-click="showMe=true"></button>
+  <button ng-click="showMe=false"></button>

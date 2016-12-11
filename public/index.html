@@ -1,0 +1,58 @@
+<!DOCType html>
+<html ng-app="webReels">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Reels</title>
+
+  <!-- Style links -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- JQuery, Bootstrap, Angular scripts -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navibar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Web Reels</a>
+      </div>
+
+
+      <div class="collapse navbar-collapse" id="navibar">
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <button id="sign-in" class="btn btn-primary btn-med" role="button" data-toggle="modal" data-target="#login">
+              Sign in
+            </button>
+          </li>
+          <li>
+            <a ui-sref="homePage">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content" ui-view>
+    <!-- States go here -->
+  </main>
+
+
+  <!-- Controllers -->
+  <script src="app.routes.js"></script>
+  <script src="controllers/homeController.js"></script>
+
+</body>
+</html>
