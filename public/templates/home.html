@@ -1,4 +1,4 @@
-<div ng-hide="showMe">
+<div ng-hide="vm.isLoggedIn()">
   <div class="jumbotron">
     <h2 id="subHeader">See what's next.</h2>
     <p>WATCH ANYWHERE.CANCEL ANYTIME</p>
@@ -21,14 +21,14 @@
         </div>
         <div id="forms">
           <!-- Login Form -->
-          <form id="login-form">
+          <form id="login-form" ng-submit="vm.login()">
             <div class="modal-body">
-              <input type="text" id="username" class="form-control" placeholder="username">
-              <input type="password" id="password" class="form-control" placeholder="password" required>
+              <input type="text" id="email" class="form-control" placeholder="email" ng-model="vm.loginData.email" required>
+              <input type="password" id="password" class="form-control" placeholder="password" ng-model="vm.loginData.password" required>
             </div>
             <div class="modal-footer">
               <div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                <button id="buttonLogIn" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
               </div>
             </div>
           </form>
@@ -38,7 +38,7 @@
   </div>
 
   <!-- Register Modal -->
-  <div class="modal fade" id="register"  aria-hidden="true" style="display:none;">
+  <div ng-controller='UsersController as vm' class="modal fade" id="register"  aria-hidden="true" style="display:none;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header" align="center">
@@ -50,11 +50,11 @@
 
         <div id=" register-forms">
           <!-- Register Form -->
-          <form action="" id="register-form">
+          <form ng-submit="vm.createUser()" id="register-form">
             <div class="modal-body">
-              <input type="text" id="register-username" class="form-control" placeholder="username">
-              <input type="email" id="register-email" class="form-control" placeholder="email" required>
-              <input type="password" id="register-password" class="form-control" placeholder="password" required>
+              <input type="text" id="register-username" class="form-control" placeholder="username" ng-model="vm.userData.name" required>
+              <input type="email" id="register-email" class="form-control" placeholder="email" ng-model="vm.userData.email" required>
+              <input type="password" id="register-password" class="form-control" placeholder="password" ng-model="vm.userData.password" required>
             </div>
             <div class="modal-footer">
               <div>
@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<div ng-show="showMe" class="jumbotron row home">
+<div ng-show="vm.isLoggedIn()" class="jumbotron row home">
       <div class="col-xs-4">
         <div>
           <h3>{{ vm.movies.original_title }}</h3>
@@ -80,14 +80,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-  <button ng-click="showMe=true"></button>
-  <button ng-click="showMe=false"></button>

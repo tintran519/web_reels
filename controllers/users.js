@@ -1,5 +1,10 @@
 // Require resource's model(s).
 var User = require("../models/user");
+    bcrypt      = require('bcrypt-nodejs'),
+    jwt         = require('jsonwebtoken'),
+    env         = require('../config/environment'),
+    topSecret = env.topSecret;
+
 
 //===============
 //Get all users
@@ -80,7 +85,7 @@ var update = function(req, res) {
 //Delete User
 var userDelete = function(req, res) {
   User.remove({
-        ._id: req.params.id
+         _id: req.params.id
       }, function(err, user) {
         if (err) res.send(err);
 

@@ -1,7 +1,7 @@
 (function() {
 
   angular.module('webReels')
-         .factory('authInterceptors', authInterceptor);
+         .factory('authInterceptor', authInterceptor);
 
   authInterceptor.$inject = ["$q", "$location", "authToken"];
 

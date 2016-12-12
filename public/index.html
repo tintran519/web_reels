@@ -9,14 +9,18 @@
   <link rel="stylesheet" href="/assets/css/main.css">
 
   <!-- JQuery, Bootstrap, Angular scripts -->
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.1/ui-bootstrap-tpls.js"></script>
 
 </head>
-<body>
+<body ng-controller="MainController as vm" ng-cloak>
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -32,10 +36,13 @@
 
       <div class="collapse navbar-collapse" id="navibar">
         <ul class="nav navbar-nav pull-right">
-          <li>
+          <li ng-hide="vm.isLoggedIn()">
             <button id="sign-in" class="btn btn-primary btn-med" role="button" data-toggle="modal" data-target="#login">
               Sign in
             </button>
+          </li>
+          <li ng-show="vm.isLoggedIn()">
+            <button id="sign-out" class="btn btn-primary btn-med" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</button>
           </li>
           <li>
             <a ui-sref="homePage">Home</a>
@@ -51,8 +58,18 @@
 
 
   <!-- Controllers -->
+  <script src="app.module.js"></script>
   <script src="app.routes.js"></script>
+  <script src="/services/auth.token.js"></script>
+  <script src="/services/auth.interceptor.js"></script>
+  <script src="/services/auth.service.js"></script>
+  <script src="/services/user.dataservice.js"></script>
   <script src="controllers/homeController.js"></script>
+  <script src="controllers/loginController.js"></script>
+  <script src="controllers/usersController.js"></script>
+  <script src="controllers/mainController.js"></script>
+
+
 
 </body>
 </html>
