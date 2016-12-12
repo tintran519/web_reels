@@ -14,8 +14,16 @@
 
       vm.getMovies = getMovies;
 
+      vm.getMovies();
+
       function getMovies() {
-        $http.get()
+        $http.get('https://api.themoviedb.org/3/movie/120?api_key=' + process.env.TMDB_API_KEY)
+          .then(function(res){
+            console.log(res.data);
+            vm.movies= res.data;
+          }, function(err) {
+            console.error('Error retrieving movie', err);
+          });
       }
 
     }

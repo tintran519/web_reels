@@ -2,8 +2,10 @@
   'use strict';
 
   angular
-    .module('webReels', ['ui.router'])
+    .module('webReels')
     .config(AppRouter);
+
+  AppRouter.$inject = ["$stateProvider", "$urlRouterProvider"];
 
   function AppRouter($stateProvider, $urlRouterProvider) {
 
@@ -13,7 +15,7 @@
       .state('homePage', {
         url: '/',
         templateUrl: 'templates/home.html',
-        controller: 'HomeController as vm'
+        controller: 'LoginController as vm'
       })
       .state('showPage', {
         url: '/show',
@@ -21,4 +23,5 @@
         controller: 'ShowController as vm'
       })
   }
+
 })();
