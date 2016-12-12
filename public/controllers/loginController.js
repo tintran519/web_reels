@@ -18,6 +18,7 @@
       vm.loginData;
 
       function login() {
+        $('#login').modal('hide');
         authService.login(vm.loginData.email, vm.loginData.password)
           .then(function(res) {
             $log.log(res.data);

@@ -13,6 +13,7 @@
       vm.createUser = createUser
 
       function createUser() {
+        $('#register').modal('hide');
         vm.message = '';
         userDataService.create(vm.userData)
           .then(function(data) {
