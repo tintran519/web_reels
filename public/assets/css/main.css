@@ -1,17 +1,48 @@
+/*#jumboContent > p,h2 {
+  background-color: #223777;
+  color: white;
+}*/
+
 *,
 html,
 body {
   box-sizing: border-box;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-color: black;*/
+  /*color: white;*/
 }
 
+
+/*.jumbotron {
+  background-color: #223777;
+  border: 1px solid gold;
+}*/
+
+/*=================================*/
+/*CSS for Jumbotron on Home Page*/
 .jumbotron.home {
   /*background-image: url(https://image.tmdb.org/t/p/w1280/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg);*/
   background-size: cover;
   background-repeat: no-repeat;
-  height: 500px;
+  height: 350px;
+  padding: 0px;
+  margin: 0px;
 }
 
+.featuredInfo {
+  height: 350px;
+  color: white;
+  background-color: rgba(33, 31, 31, 0.60);
+}
+
+.featuredInfo > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+/*===========================*/
 #sign-in, #sign-out {
   margin: 10px 3% 0;
   background-color: royalblue;
@@ -24,7 +55,6 @@ body {
 #login input[type=text], input[type=password] {
   margin-top: 10px;
 }
-
 
 #register .modal-dialog {
     width: 350px;
@@ -56,6 +86,21 @@ body {
     padding: 15px 15px 15px 15px;
     text-align: left;
     border-top: 0px;
+}
+
+/*Carousel Home Page CSS*/
+.contain.movieList {
+    width: 100%
+}
+
+.row.movieList {
+    overflow: scroll
+    width: 100%
+}
+
+.tile {
+    position: relative;
+    display: inline-block;
 }
 
 a { color: #00B7FF; }

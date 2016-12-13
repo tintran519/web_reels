@@ -20,7 +20,7 @@
         console.log('working');
         $http.get('/featured')
           .then(function(res) {
-            console.log(res.data.status_code);
+            console.log(res);
             if (res.data.status_code === 34) {
               console.log('if statement working');
               $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg)`);
