@@ -6,7 +6,7 @@ body {
 }
 
 .jumbotron.home {
-  background-image: url(https://image.tmdb.org/t/p/w1280/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg);
+  /*background-image: url(https://image.tmdb.org/t/p/w1280/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg);*/
   background-size: cover;
   background-repeat: no-repeat;
   height: 500px;

@@ -5,26 +5,25 @@
     .module('webReels')
     .controller('HomeController', HomeController);
 
-    HomeController.$inject = ["$http"]
+    HomeController.$inject = ["$state", "userDataService", "$log", "$http"]
 
-    function HomeController($http){
+    function HomeController($state, userDataService, $log, $http){
       var vm = this;
 
-      vm.movies = [];
+      vm.featuredMovies = [];
 
       vm.getMovies = getMovies;
 
       vm.getMovies();
 
       function getMovies() {
-        $http.get('https://api.themoviedb.org/3/movie/120?api_key=' + process.env.TMDB_API_KEY)
-          .then(function(res){
-            console.log(res.data);
-            vm.movies= res.data;
+        $http.get('/featured')
+          .then(function(res) {
+            console.log(res);
+            vm.featuredMovies = res.data;
           }, function(err) {
-            console.error('Error retrieving movie', err);
+            console.error('Error retrieving movie');
           });
-      }
-
     }
+  }
 })();

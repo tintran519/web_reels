@@ -68,12 +68,14 @@
   </div>
 </div>
 
-<div ng-show="vm.isLoggedIn()" class="jumbotron row home">
-      <div class="col-xs-4">
+<div ng-show="vm.isLoggedIn()">
+  <div ng-controller="HomeController as vm" class="jumbotron row home">
+    <div class="col-xs-4">
         <div>
           <h3>{{ vm.movies.original_title }}</h3>
         </div>
-      </div>
+     </div>
+  </div>
 </div>
 
 
