@@ -21,5 +21,9 @@ router.delete('/users/:id', AuthsCtrl.tokenVerify, usersController.userDelete);
 
 // retrieving api data
 router.get('/featured', movieCtrl.featured);
+router.get('/topRated', movieCtrl.topRated);
+router.get('/popular', movieCtrl.popular);
+router.get('/recommended', movieCtrl.recommended);
+
 
 module.exports = router;

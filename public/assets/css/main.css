@@ -29,6 +29,12 @@ body {
   margin: 0px;
 }
 
+#featuredTitle {
+  font-weight: bold;
+  text-align: center;
+  color: red;
+}
+
 .featuredInfo {
   height: 350px;
   color: white;
@@ -41,6 +47,18 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+}
+
+#moreInfo {
+  text-align: center;
+}
+
+#moreInfo > h4 {
+  background-color: royalblue;
+  padding: 5%;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
 }
 /*===========================*/
 #sign-in, #sign-out {
@@ -90,17 +108,36 @@ body {
 
 /*Carousel Home Page CSS*/
 .contain.movieList {
-    width: 100%
+    width: 100%;
 }
 
 .row.movieList {
-    overflow: scroll
-    width: 100%
+    overflow: scroll;
+    width: 100%;
+}
+
+.innerRow {
+    white-space: nowrap;
+    transition: 450ms transform;
 }
 
 .tile {
     position: relative;
     display: inline-block;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center;
 }
+
+.tileTitle {
+  text-align: center;
+}
+
+/*==================*/
+/*Show Page CSS*/
+#ShowMovieTitle {
+  text-align: left;
+}
+
 
 a { color: #00B7FF; }
