@@ -39,7 +39,7 @@ function popular(req, res) {
 function recommended(req, res) {
   // var id = Math.floor(Math.random() * 20,000) + 20;
   var options = {
-    url: rootURL + '20' +  '/recommendations?' +'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=1',
+    url: rootURL + '38' +  '/recommendations?' +'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=1',
     };//options is the request we are sending aka api url
   console.log(options)
   request(options, function(err, response, body) {
