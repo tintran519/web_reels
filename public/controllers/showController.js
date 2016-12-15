@@ -11,24 +11,25 @@
       var vm = this;
 
       vm.parseTrailer = parseTrailer;
-      vm.topMovies = movieService.getTopMovies();
-      vm.SelectedMovie = movieService.SelectedTopMovie;
-      vm.MovieId = movieService.SelectedTopMovie.id
+      vm.Movies = movieService.getMovies();
+      vm.SelectedMovie = movieService.SelectedMovie;
+      vm.MovieId = movieService.SelectedMovie.id;
+      vm.MovieCategory = movieService.SelectedMovieType;
 
       vm.movieInfo = [];
 
       getMovieInfo();
 
-      console.log(movieService.SelectedTopMovie)
-      console.log('the ID', vm.MovieId)
-      console.log('url here',`/movies?topRated[movieId]=${vm.MovieId}`)
+      console.log(movieService.SelectedMovie)
+      // console.log('here is the type', movieService.SelectedMovieType)
+      // console.log('the ID', vm.MovieId)
 
       function getMovieInfo() {
-        $http.get(`/movies?topRated[movieId]=${vm.MovieId}`)
+        console.log(`/movies?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
+        $http.get(`/movies?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
           .then(function(res) {
-            console.log(res);
+            console.log('here is the movie info',res);
             vm.movieInfo = res.data;
-            vm.youTube = vm.parseTrailer(vm.movieInfo.videos.results[0].key);
           }, function(err) {
             console.error('error')
           })

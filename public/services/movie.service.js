@@ -6,15 +6,16 @@
 
   function movieService() {
     var movieService = {};
-    movieService.topMovies = [];
-    movieService.SelectedTopMovie;
+    movieService.Movies = [];
+    movieService.SelectedMovie;
+    movieService.SelectedMovieType;
 
-    movieService.addTopMovies = function(topList) {
-      movieService.topMovies.push(topList);
+    movieService.addMovies = function(List) {
+      movieService.Movies.push(List);
     };
 
-    movieService.getTopMovies = function(){
-      return movieService.topMovies;
+    movieService.getMovies = function(){
+      return movieService.Movies;
     };
 
     return movieService;

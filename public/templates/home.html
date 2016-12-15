@@ -78,9 +78,9 @@
       <div class="jumbotron home row">
         <div>
           <div class="col-xs-4 featuredInfo">
-              <h3 id="featuredTitle">{{ vm.featuredMovies.title }}</h3>
-              <p id="featuredOverview">{{ vm.featuredMovies.overview }}</p>
-              <div id="moreInfo">
+              <h3 id="featuredTitle">{{ vm.featuredMovies.data.title }}</h3>
+              <p id="featuredOverview">{{ vm.featuredMovies.data.overview }}</p>
+              <div ng-click="vm.callToSelectedMovie(vm.featuredMovies.data,'featured')" ui-sref="showPage" id="moreInfo">
                 <h4>More Info</h4>
               </div>
           </div>
@@ -93,7 +93,7 @@
     <div class="row movieList">
       <div class="innerRow">
           <div ng-repeat="movie in vm.topMovies" class="tile">
-              <div ng-click="vm.callToSelectedTopMovie(movie)" ui-sref="showPage" class="tile__media">
+              <div ng-click="vm.callToSelectedMovie(movie,'topRated')" ui-sref="showPage" class="tile__media">
                 <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
               </div>
             <div class="tile__details">
@@ -113,7 +113,7 @@
       <div class="innerRow">
 
         <div ng-repeat="movie in vm.popularMovies" class="tile">
-          <div class="tile__media">
+          <div ng-click="vm.callToSelectedMovie(movie,'popular')" ui-sref="showPage" class="tile__media">
             <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
           </div>
           <div class="tile__details">
@@ -133,7 +133,7 @@
       <div class="innerRow">
 
         <div ng-repeat="movie in vm.recommendedMovies" class="tile">
-          <div class="tile__media">
+          <div ng-click="vm.callToSelectedMovie(movie,'recommended')" ui-sref="showPage" class="tile__media">
             <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
           </div>
           <div class="tile__details">

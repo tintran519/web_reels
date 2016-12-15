@@ -11,28 +11,32 @@
       var vm = this;
 
       //Movie Lists
-      vm.featuredMovies = {};
+      vm.featuredMovies = [];
       vm.topMovies = [];
       vm.popularMovies = [];
       vm.recommendedMovies = [];
-      vm.callToSelectedTopMovie = callToSelectedTopMovie;
+      vm.callToSelectedMovie = callToSelectedMovie;
 
       //Invoke functions
       getFeaturedMovies();
-      getTopMovies().then(function(res) {
-        callToAddTopMovies(vm.topMovies);
-      }, function(err) {
-        $log.error(err)
-      });
+      getTopMovies();
+
+      // .then(function(res) {
+      //   callToAddMovies(vm.topMovies);
+      // }, function(err) {
+      //   $log.error(err)
+      // });
       getPopularMovies();
       getRecommendedMovies();
+      console.log('wazzah',vm.movieImage)
 
-      function callToSelectedTopMovie(movie){
-        movieService.SelectedTopMovie = movie;
+      function callToSelectedMovie(movie, type){
+        movieService.SelectedMovie = movie;
+        movieService.SelectedMovieType = type;
       }
 
-      function callToAddTopMovies (topList) {
-        movieService.addTopMovies(topList);
+      function callToAddMovies (List) {
+        movieService.addMovies(List);
       };
 
       function getFeaturedMovies() {
@@ -45,10 +49,11 @@
               // $('#featuredOverview').text("Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.");
               // return;
             } else {
+              vm.featuredMovies = res;
+              console.log(vm.featuredMovies);
               vm.featuredMovies.title = res.data.title;
               vm.featuredMovies.overview = res.data.overview;
               vm.movieImage = res.data.backdrop_path;
-              console.log("wush", res.data);
               return vm.movieImage;
             }
             }, function(err) {
