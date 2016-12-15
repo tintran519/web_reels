@@ -36,13 +36,14 @@
       };
 
       function getFeaturedMovies() {
-        $http.get('/featured')
+        $http.get('/movies?featured')
           .then(function(res) {
             if (res.data.status_code === 34) {
-              $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg)`);
-              $('#featuredTitle').text('Interstellar');
-              $('#featuredOverview').text("Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.");
-              return;
+              getFeaturedMovies();
+              // $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg)`);
+              // $('#featuredTitle').text('Interstellar');
+              // $('#featuredOverview').text("Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.");
+              // return;
             } else {
               vm.featuredMovies.title = res.data.title;
               vm.featuredMovies.overview = res.data.overview;
@@ -54,7 +55,6 @@
             console.error('Error retrieving movie');
           })
           .then(function(res) {
-            if (res === undefined) return;
             console.log('movieImage link', res);
             $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original${res})`);
           }, function(err) {
@@ -63,7 +63,7 @@
       }
 
       function getTopMovies() {
-          return $http.get('/topRated')
+          return $http.get('/movies?topRated')
             .then(function(res) {
               console.log('top movies', res);
               vm.topMovies = res.data.results;
@@ -74,7 +74,7 @@
       }
 
       function getPopularMovies() {
-          $http.get('/popular')
+          $http.get('/movies?popular')
             .then(function(res) {
               console.log('top movies', res);
               vm.popularMovies = res.data.results;
@@ -85,10 +85,12 @@
       }
 
       function getRecommendedMovies() {
-        console.log('recmovies working');
-          $http.get('/recommended')
+          $http.get('/movies?recommended')
             .then(function(res) {
               console.log('recommeded object', res);
+              if(res.data.status_code === 34 || res.data.status_code === 11 || res.data.total_results === 0) {
+                getRecommendedMovies();
+              }
               vm.recommendedMovies = res.data.results;
               console.log('look here for rec', vm.recommendedMovies)
             }, function(err) {
