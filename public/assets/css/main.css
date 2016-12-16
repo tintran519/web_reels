@@ -67,6 +67,10 @@ body {
   display: inline-block;
   cursor: pointer;
 }
+
+#loggedInPage {
+  background-color:black;
+}
 /*===========================*/
 /*Register and log in modals*/
 .modalHeader {
@@ -147,14 +151,31 @@ body {
 
 /*==================*/
 /*Show Page CSS*/
+#showPage {
+  background-color: black;
+  height: 100%;
+}
+
+.showHeader {
+  color: gold;
+}
+
+#showImage {
+  left: 5%;
+}
+
+#showContent {
+  right: 3%;
+}
 .container.showBlock {
-  background-color: teal;
+  background-color: #002f46;
   margin: 0px;
   width: 100%;
 }
 
 #ShowMovieTitle {
   text-align: left;
+  font-weight: bold;
 }
 
 #trailer {
@@ -165,8 +186,20 @@ body {
   text-align: center;
 }
 
+.container.cast {
+  width: 100%;
+  background-color: #0b0329;
+}
+
 #castInfo {
   text-align: left;
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-gap: 40px;
+  column-gap: 40px;
+  -moz-column-gap: 40px;
+  /*background-color: #0b0329;*/
 }
 
 #castInfo span {

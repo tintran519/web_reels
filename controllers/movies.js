@@ -44,8 +44,9 @@ function featured(req, res) {
 
 function topRated(req, res) {
   if (req.query.topRated.movieId === undefined) {
+    var id = Math.floor(Math.random() * 224) + 1;
     var options = {
-      url: rootURL + 'top_rated?' + 'api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
+      url: rootURL + 'top_rated?' + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=' + id,
     };
     request(options, function(err, response, body) {
       console.log('JS object here', JSON.parse(body).backdrop_path);
@@ -65,8 +66,9 @@ function topRated(req, res) {
 
 function popular(req, res) {
   if (req.query.popular.movieId === undefined) {
+    var id = Math.floor(Math.random() * 978) + 1;
     var options = {
-      url: rootURL + 'popular?' + 'api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
+      url: rootURL + 'popular?' + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=' + id,
     };
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))

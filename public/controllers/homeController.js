@@ -42,7 +42,7 @@
       function getFeaturedMovies() {
         $http.get('/movies?featured')
           .then(function(res) {
-            if (res.data.status_code === 34) {
+            if (res.data.status_code === 34 || res.data.backdrop_path === null) {
               getFeaturedMovies();
               // $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg)`);
               // $('#featuredTitle').text('Interstellar');

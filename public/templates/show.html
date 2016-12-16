@@ -1,21 +1,21 @@
+<div id="showPage" ng-cloak>
 <div class="container showBlock">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-6" id="showImage">
       <img ng-src='https://image.tmdb.org/t/p/w300/{{ show.SelectedMovie.poster_path }}' alt=""  />
     </div>
 
-    <div class="col-xs-6">
-      <h1 id="ShowMovieTitle">{{ show.SelectedMovie.title }}</h1>
+    <div class="col-xs-6" id="showContent">
+      <h1 id="ShowMovieTitle">{{ show.SelectedMovie.title }}</h1><br>
       <h4>Release Date: {{ show.movieInfo.release_date }}</h4>
       <h3>Overview</h3>
         <p>{{ show.SelectedMovie.overview }}</p>
-        <p>Average Rating: {{ show.movieInfo.vote_average }}</p>
-        <p>Run Time: {{ show.movieInfo.runtime }}min</p>
+        <p>Average Rating: <i class="fa fa-star" aria-hidden="true"></i>{{ show.movieInfo.vote_average }}</p>
+        <p><i class="fa fa-clock-o" aria-hidden="true"></i>Run Time: {{ show.movieInfo.runtime }}min</p>
     </div>
   </div>
 </div>
 
-<!-- <hr> -->
 <h3 class="showHeader">Trailer</h3>
 <!-- Trailer -->
 <div class="container">
@@ -27,12 +27,15 @@
 
   </div>
 </div>
-
-<hr>
-<h3 class="showHeader">Full Cast & Crew</h3>
+<br><br>
 <!-- Cast Info -->
-<div id="castInfo">
-  <div ng-repeat="cast in show.movieInfo.credits.cast">
-    <p><span>{{ cast.name }}</span> as {{ cast.character }}</p>
+<div class="container cast">
+  <div class="row">
+      <h3 class="showHeader">Full Cast & Crew</h3>
+    <div id="castInfo">
+      <div ng-repeat="cast in show.movieInfo.credits.cast">
+        <p><span>{{ cast.name }}</span> as {{ cast.character }}</p>
+      </div>
+    </div>
   </div>
 </div>
