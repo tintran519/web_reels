@@ -15,6 +15,7 @@
       vm.SelectedMovie = movieService.SelectedMovie;
       vm.MovieId = movieService.SelectedMovie.id;
       vm.MovieCategory = movieService.SelectedMovieType;
+      vm.MediaCategory = movieService.SelectedCategory;
 
       vm.movieInfo = [];
 
@@ -25,8 +26,8 @@
       // console.log('the ID', vm.MovieId)
 
       function getMovieInfo() {
-        console.log(`/movies?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
-        $http.get(`/movies?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
+        console.log(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
+        $http.get(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
           .then(function(res) {
             console.log('here is the movie info',res);
             vm.movieInfo = res.data;

@@ -1,5 +1,6 @@
 var request = require('request');
 const rootURL = 'https://api.themoviedb.org/3/movie/';
+const rootURLtv = 'https://api.themoviedb.org/3/tv/';
 
 function movies (req, res) {
   console.log(req.query)
@@ -19,6 +20,16 @@ function movies (req, res) {
       break;
   }
 }
+
+function tv (req, res) {
+
+  switch(Object.keys(req.query)[0]) {
+    case 'popular':
+      tvPopular(req, res);
+      break;
+  }
+}
+
 
 function featured(req, res) {
   if (req.query.featured.movieId === undefined) {
@@ -106,7 +117,27 @@ function recommended(req, res) {
   }
 }
 
+function tvPopular(req,res) {
+  if (req.query.popular.movieId === undefined) {
+    var id = Math.floor(Math.random() * 1001) + 1;
+    var options = {
+      url: rootURLtv + 'popular?' + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=' + id,
+    };
+      request(options, function(err, response, body) {
+        res.json(JSON.parse(body))
+      });
+    } else {
+    var options = {
+      url: rootURLtv + req.query.popular.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
+    };
+    request(options, function(err, response, body) {
+      res.json(JSON.parse(body))
+      });
+    }
+  }
+
 
 module.exports = {
-  movies:movies
+  movies:movies,
+  tv:tv
 }

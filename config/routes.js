@@ -21,6 +21,7 @@ router.delete('/users/:id', AuthsCtrl.tokenVerify, usersController.userDelete);
 
 // retrieving api data
 router.get('/movies', movieCtrl.movies);
+router.get('/tv', movieCtrl.tv)
 // router.get('/movies?cast', movieCtrl.cast);
 // router.post('/movies/watchlist', movieCtrl.addToWatchlist)
 

@@ -6,12 +6,17 @@
     </div>
 
     <div class="col-xs-6" id="showContent">
-      <h1 id="ShowMovieTitle">{{ show.SelectedMovie.title }}</h1><br>
-      <h4>Release Date: {{ show.movieInfo.release_date }}</h4>
+      <h1 ng-if="show.SelectedMovie.name" id="ShowMovieTitle">{{ show.SelectedMovie.name }}</h1><br>
+      <h1 ng-if="show.SelectedMovie.title" id="ShowMovieTitle">{{ show.SelectedMovie.title }}</h1><br>
+      <h4 ng-if="show.movieInfo.release_date">Release Date: {{ show.movieInfo.release_date }}</h4>
+      <h4 ng-if="show.movieInfo.first_air_date">First Air Date: {{ show.movieInfo.first_air_date }}</h4>
+
       <h3>Overview</h3>
         <p>{{ show.SelectedMovie.overview }}</p>
         <p>Average Rating: <i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{ show.movieInfo.vote_average }}</p>
-        <p><i class="fa fa-clock-o" aria-hidden="true"></i>Run Time: {{ show.movieInfo.runtime }}min</p>
+        <p ng-if="show.movieInfo.runtime"><i class="fa fa-clock-o" aria-hidden="true"></i>Run Time: {{ show.movieInfo.runtime }}min</p>
+        <p ng-if="show.movieInfo.number_of_seasons">Seasons: {{ show.movieInfo.number_of_seasons }}</p>
+        <p ng-if="show.movieInfo.number_of_episodes">Episodes: {{ show.movieInfo.number_of_episodes }}</p>
     </div>
   </div>
 </div>

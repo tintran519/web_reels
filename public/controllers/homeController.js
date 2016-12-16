@@ -17,6 +17,8 @@
       vm.recommendedMovies = [];
       vm.callToSelectedMovie = callToSelectedMovie;
 
+      vm.popularTv = [];
+
       //Invoke functions
       getFeaturedMovies();
       getTopMovies();
@@ -28,11 +30,12 @@
       // });
       getPopularMovies();
       getRecommendedMovies();
-      console.log('wazzah',vm.movieImage)
+      getPopularTv();
 
-      function callToSelectedMovie(movie, type){
+      function callToSelectedMovie(category, movie, type){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
+        movieService.SelectedCategory = category;
       }
 
       function callToAddMovies (List) {
@@ -102,5 +105,17 @@
               console.error('Error');
             })
       }
+
+      // ============================
+      function getPopularTv() {
+        $http.get('/tv?popular')
+          .then(function(res) {
+            console.log('tv here', res);
+            vm.popularTv = res.data.results;
+          }, function(err) {
+            console.error('Error');
+          })
+      }
+
   }
 })();
