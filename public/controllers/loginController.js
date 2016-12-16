@@ -19,6 +19,8 @@
 
       function login() {
         $('#login').modal('hide');
+        $('body').css('background-image','url()');
+        $('body').css('background-color','black');
           authService.login(vm.loginData.email, vm.loginData.password)
           .then(function(res) {
             $log.log(res);

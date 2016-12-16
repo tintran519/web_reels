@@ -37,6 +37,7 @@
       authToken.setToken();
 
       // return to homepage
+      $('body').css('background-image','url(https://s-media-cache-ak0.pinimg.com/originals/0c/1b/54/0c1b541757e16d7c32736c0ec00d416f.jpg)');
       $state.go('homePage');
     };
 

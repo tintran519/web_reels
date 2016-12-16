@@ -1,8 +1,8 @@
-<div ng-hide="vm.isLoggedIn()">
-  <div class="jumbotron">
+<div ng-hide="vm.isLoggedIn()" id='wrapper'>
+  <div>
     <div id="jumboContent">
-      <h2 id="subHeader">See what's next.</h2>
-      <p>WATCH ANYWHERE.CANCEL ANYTIME</p>
+      <h1 id="subHeader">See what's next.</h1>
+      <h3>WATCH ANYWHERE. CANCEL ANYTIME</h3>
       <p>
         <button class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register">
           Register
@@ -19,7 +19,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
-          <p>Web Reels</p>
+          <p class="modalHeader">Web Reels</p>
         </div>
         <div id="forms">
           <!-- Login Form -->
@@ -47,7 +47,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
-          <p>Web Reels</p>
+          <p class='modalHeader'>Web Reels</p>
         </div>
 
         <div id=" register-forms">

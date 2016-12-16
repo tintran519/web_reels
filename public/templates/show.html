@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container showBlock">
   <div class="row">
     <div class="col-xs-6">
       <img ng-src='https://image.tmdb.org/t/p/w300/{{ show.SelectedMovie.poster_path }}' alt=""  />
@@ -10,11 +10,12 @@
       <h3>Overview</h3>
         <p>{{ show.SelectedMovie.overview }}</p>
         <p>Average Rating: {{ show.movieInfo.vote_average }}</p>
+        <p>Run Time: {{ show.movieInfo.runtime }}min</p>
     </div>
   </div>
 </div>
 
-<hr>
+<!-- <hr> -->
 <h3 class="showHeader">Trailer</h3>
 <!-- Trailer -->
 <div class="container">

@@ -7,6 +7,7 @@
   <!-- Style links -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 
   <!-- JQuery, Bootstrap, Angular scripts -->
   <script
@@ -30,7 +31,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="#" class="navbar-brand">Web Reels</a>
+        <a role='button' ui-sref="homePage" class="navbar-brand">Web Reels</a>
       </div>
 
 
@@ -44,9 +45,9 @@
           <li ng-show="vm.isLoggedIn()">
             <button id="sign-out" class="btn btn-primary btn-med" ng-click="vm.logout()">Logout {{ vm.userService.user.name }}</button>
           </li>
-          <li>
+<!--           <li>
             <a ui-sref="homePage">Home</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
