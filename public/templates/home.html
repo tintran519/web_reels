@@ -1,12 +1,14 @@
-<div ng-hide="vm.isLoggedIn()">
-  <div class="jumbotron">
-    <h2 id="subHeader">See what's next.</h2>
-    <p>WATCH ANYWHERE.CANCEL ANYTIME</p>
-    <p>
-      <button class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register">
-        Register
-      </button>
-    </p>
+<div ng-hide="vm.isLoggedIn()" id='wrapper'>
+  <div>
+    <div id="jumboContent">
+      <h1 id="subHeader">See what's next.</h1>
+      <h3>WATCH ANYWHERE. CANCEL ANYTIME</h3>
+      <p>
+        <button class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register">
+          Register
+        </button>
+      </p>
+    </div>
   </div>
 
   <!-- Login Modal -->
@@ -17,7 +19,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
-          <p>Web Reels</p>
+          <p class="modalHeader">Web Reels</p>
         </div>
         <div id="forms">
           <!-- Login Form -->
@@ -45,7 +47,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </button>
-          <p>Web Reels</p>
+          <p class='modalHeader'>Web Reels</p>
         </div>
 
         <div id=" register-forms">
@@ -68,15 +70,78 @@
   </div>
 </div>
 
-<div ng-show="vm.isLoggedIn()" class="jumbotron row home">
-      <div class="col-xs-4">
+<!-- Show this page when user logs in -->
+
+  <!-- Featured Movie in Jumbotron -->
+  <div ng-show="vm.isLoggedIn()" id="loggedInPage">
+    <div ng-controller="HomeController as vm">
+      <div class="jumbotron home row">
         <div>
-          <h3>{{ vm.movies.original_title }}</h3>
+          <div class="col-xs-4 featuredInfo">
+              <h3 id="featuredTitle">{{ vm.featuredMovies.data.title }}</h3>
+              <p id="featuredOverview">{{ vm.featuredMovies.data.overview }}</p>
+              <div ng-click="vm.callToSelectedMovie(vm.featuredMovies.data,'featured')" ui-sref="showPage" id="moreInfo">
+                <h4>More Info</h4>
+              </div>
+          </div>
+        </div>
+      </div><br><br>
+
+  <!-- Top Rated Movies Row -->
+  <div class="contain movieList">
+      <h3>Top Rated Titles</h3>
+    <div class="row movieList">
+      <div class="innerRow">
+          <div ng-repeat="movie in vm.topMovies" class="tile">
+              <div ng-click="vm.callToSelectedMovie(movie,'topRated')" ui-sref="showPage" class="tile__media">
+                <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+              </div>
+            <div class="tile__details">
+              <div class="tileTitle">
+                {{ movie.title }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+  <!-- Popular Movies Row -->
+  <div class="contain movieList">
+      <h3>Popular Titles</h3>
+    <div class="row movieList">
+      <div class="innerRow">
+
+        <div ng-repeat="movie in vm.popularMovies" class="tile">
+          <div ng-click="vm.callToSelectedMovie(movie,'popular')" ui-sref="showPage" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
+  <!-- Recommended Movies Row -->
+  <div class="contain movieList">
+      <h3>Recommended Titles</h3>
+    <div class="row movieList">
+      <div class="innerRow">
 
-
-
-
+        <div ng-repeat="movie in vm.recommendedMovies" class="tile">
+          <div ng-click="vm.callToSelectedMovie(movie,'recommended')" ui-sref="showPage" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

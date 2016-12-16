@@ -5,9 +5,9 @@
     .module('webReels')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ["$state", "userDataService", "$log", "authService"];
+    LoginController.$inject = ["$state", "userDataService", "$log", "authService", "$http"];
 
-    function LoginController($state, userDataService, $log, authService) {
+    function LoginController($state, userDataService, $log, authService, $http) {
       var vm = this;
 
       vm.login       = login;
@@ -19,10 +19,9 @@
 
       function login() {
         $('#login').modal('hide');
-        authService.login(vm.loginData.email, vm.loginData.password)
+          authService.login(vm.loginData.email, vm.loginData.password)
           .then(function(res) {
-            $log.log(res.data);
-            // $state.go('homePage');
+            $log.log(res);
           });
       };
     }

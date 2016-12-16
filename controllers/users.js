@@ -5,7 +5,13 @@ var User = require("../models/user");
     env         = require('../config/environment'),
     topSecret = env.topSecret;
 
-
+// Add to watchlist
+function addToWatchlist (req, res) {
+  // get user by id
+  // req.body should contain movie { id,name,image_url } to add to watchlist
+  // add movie object { id,name,image_url } to user.watchlists array
+  // save
+}
 //===============
 //Get all users
 var index = function(req, res){

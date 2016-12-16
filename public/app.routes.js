@@ -9,18 +9,18 @@
 
   function AppRouter($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
       .state('homePage', {
-        url: '/',
-        templateUrl: 'templates/home.html',
+        url: '/home',
+        templateUrl: '/templates/home.html',
         controller: 'LoginController as vm'
       })
       .state('showPage', {
-        url: '/show',
+        url: '/movie/:id',
         templateUrl: 'templates/show.html',
-        controller: 'ShowController as vm'
+        controller: 'ShowController as show'
       })
   }
 

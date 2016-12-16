@@ -5,6 +5,7 @@ var express = require('express'),
 var pagesController = require('../controllers/pages');
 var usersController = require('../controllers/users');
 var AuthsCtrl       = require('../controllers/auth');
+var movieCtrl       = require('../controllers/movies');
 
 
 // root path:
@@ -18,5 +19,9 @@ router.get('/users/:id',    AuthsCtrl.tokenVerify, usersController.show);
 router.put('/users/:id',    AuthsCtrl.tokenVerify, usersController.update);
 router.delete('/users/:id', AuthsCtrl.tokenVerify, usersController.userDelete);
 
+// retrieving api data
+router.get('/movies', movieCtrl.movies);
+// router.get('/movies?cast', movieCtrl.cast);
+// router.post('/movies/watchlist', movieCtrl.addToWatchlist)
 
 module.exports = router;
