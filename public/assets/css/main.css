@@ -161,11 +161,11 @@ body {
 }
 
 #showImage {
-  left: 5%;
+  left: 10%;
 }
 
 #showContent {
-  right: 3%;
+  right: 11%;
 }
 .container.showBlock {
   background-color: #002f46;

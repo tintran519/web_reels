@@ -1,5 +1,23 @@
-# web_reels
+# Web Reels
+===============================
+## Description
+This web application is a movie database that allows users to easily navigate through the extensive film list that exists today. By utilizing TMDB's API, users can access a variety of information on movies from cast information to its average rating. 
 
-:tada:
+## Technologies Used
+"Web Reels" is a MEAN stack application that uses Angular as its front-end frame work, Nodejs + Express as its back-end framework, and MongoDB as its database. Javascript, CSS, and HTML were the primary languages used in this project.
 
-Enjoy… 
+## Getting Started
+Visit the link below to view the app:
+
+Once at the site, register for a free account and have fun exploring the database.
+
+## Next Steps
+Additional features and functionalities must be added to this application in order to make it comparable to other movie databases on the net. The following list contains pending upgrades for the near future:
+
+* Incorporating a search function to query specific films
+* Allow users to create a watchlist 
+* Add a rating button that links to TMDB's overall ratings for a film
+* Add profile images and information for the cast
+* Include additional information on a movie in the about section
+
+
