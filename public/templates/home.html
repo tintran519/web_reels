@@ -72,39 +72,39 @@
 
 <!-- Show this page when user logs in -->
 
-  <!-- Featured Movie in Jumbotron -->
-  <div ng-show="vm.isLoggedIn()" id="loggedInPage">
-    <div ng-controller="HomeController as vm">
-      <div class="jumbotron home row">
-        <div>
-          <div class="col-xs-4 featuredInfo">
-              <h3 id="featuredTitle">{{ vm.featuredMovies.data.title }}</h3>
-              <p id="featuredOverview">{{ vm.featuredMovies.data.overview }}</p>
-              <div ng-click="vm.callToSelectedMovie('movies', vm.featuredMovies.data,'featured')" ui-sref="showPage" id="moreInfo">
-                <h4>More Info</h4>
-              </div>
-          </div>
+<!-- Featured Movie in Jumbotron -->
+<div ng-show="vm.isLoggedIn()" id="loggedInPage">
+  <div ng-controller="HomeController as vm">
+    <div class="jumbotron home row">
+      <div>
+        <div class="col-xs-4 featuredInfo">
+            <h3 id="featuredTitle">{{ vm.featuredMovies.data.title }}</h3>
+            <p id="featuredOverview">{{ vm.featuredMovies.data.overview }}</p>
+            <div ng-click="vm.callToSelectedMovie('movies', vm.featuredMovies.data,'featured')" ui-sref="showPage" id="moreInfo">
+              <h4>More Info</h4>
+            </div>
         </div>
-      </div><br><br>
+      </div>
+    </div><br><br>
 
   <!-- Top Rated Movies Row -->
   <div class="contain movieList">
       <h3>Top Rated Movie Titles</h3>
     <div class="row movieList">
       <div class="innerRow">
-          <div ng-repeat="movie in vm.topMovies" class="tile">
-              <div ng-click="vm.callToSelectedMovie('movies', movie,'topRated')" ui-sref="showPage" class="tile__media">
-                <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
-              </div>
-            <div class="tile__details">
-              <div class="tileTitle">
-                {{ movie.title }}
-              </div>
+        <div ng-repeat="movie in vm.topMovies" class="tile">
+            <div ng-click="vm.callToSelectedMovie('movies', movie,'topRated')" ui-sref="showPage" class="tile__media">
+              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+            </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
   <!-- Popular Movies Row -->
   <div class="contain movieList">
@@ -122,9 +122,9 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Recommended Movies Row -->
   <div class="contain movieList">
@@ -142,31 +142,32 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Popular Tv Row -->
-  <div class="contain movieList">
-      <h3>Popular Television Shows</h3>
-    <div class="row movieList">
-      <div class="innerRow">
+    <div class="contain movieList">
+        <h3>Popular Television Shows</h3>
+      <div class="row movieList">
+        <div class="innerRow">
 
-        <div ng-repeat="tv in vm.popularTv" class="tile">
-          <div ng-if="tv.backdrop_path">
-          <div ng-click="vm.callToSelectedMovie('tv', tv,'popular')" ui-sref="showPage" class="tile__media">
-            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ tv.backdrop_path }}' alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tileTitle">
-              {{ tv.name }}
+          <div ng-repeat="tv in vm.popularTv" class="tile">
+            <div ng-if="tv.backdrop_path">
+              <div ng-click="vm.callToSelectedMovie('tv', tv,'popular')" ui-sref="showPage" class="tile__media">
+                <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ tv.backdrop_path }}' alt=""  />
+              </div>
+              <div class="tile__details">
+                <div class="tileTitle">
+                  {{ tv.name }}
+                </div>
+              </div>
             </div>
           </div>
-          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
 
 
