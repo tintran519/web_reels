@@ -10,6 +10,7 @@
     function SearchResultsController ($log, movieService, $http, $state) {
       var vm = this;
 
+      vm.callToSelectedSearchedMovie = callToSelectedSearchedMovie;
       vm.getSearch = getSearch;
       vm.query;
       vm.searchResults = [];
@@ -37,6 +38,12 @@
         vm.query = movieService.query;
       }
 
+      function callToSelectedSearchedMovie(category, movie, type){
+        movieService.SelectedMovie = movie;
+        movieService.SelectedMovieType = type;
+        movieService.SelectedCategory = category;
+        console.log(category, movie, type);
+      }
 
     }
 })();
