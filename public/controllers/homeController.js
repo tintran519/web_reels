@@ -16,8 +16,11 @@
       vm.popularMovies = [];
       vm.recommendedMovies = [];
       vm.callToSelectedMovie = callToSelectedMovie;
+      // vm.getSearch = getSearch;
 
       vm.popularTv = [];
+
+      // vm.search;
 
       //Invoke functions
       getFeaturedMovies();
@@ -38,12 +41,8 @@
         movieService.SelectedCategory = category;
       }
 
-      function callToAddMovies (List) {
-        movieService.addMovies(List);
-      };
-
       function getFeaturedMovies() {
-        $http.get('/movies?featured')
+        $http.get('/movie?featured')
           .then(function(res) {
             if (res.data.status_code === 34 || res.data.backdrop_path === null) {
               getFeaturedMovies();
@@ -71,40 +70,52 @@
       }
 
       function getTopMovies() {
-          return $http.get('/movies?topRated')
+          return $http.get('/movie?topRated')
             .then(function(res) {
               console.log('top movies', res);
               vm.topMovies = res.data.results;
-              console.log('look here', vm.topMovies)
+              console.log('top here', vm.topMovies)
             }, function(err) {
               console.error('Error');
             })
       }
 
       function getPopularMovies() {
-          $http.get('/movies?popular')
+          $http.get('/movie?popular')
             .then(function(res) {
               console.log('top movies', res);
               vm.popularMovies = res.data.results;
-              console.log('look here', vm.popularMovies)
+              console.log('pop here', vm.popularMovies)
             }, function(err) {
               console.error('Error');
             })
       }
 
       function getRecommendedMovies() {
-          $http.get('/movies?recommended')
+          $http.get('/movie?recommended')
             .then(function(res) {
               console.log('recommeded object', res);
               if(res.data.status_code === 34 || res.data.status_code === 11 || res.data.total_results === 0) {
                 getRecommendedMovies();
               }
               vm.recommendedMovies = res.data.results;
-              console.log('look here for rec', vm.recommendedMovies)
+              console.log('rec here', vm.recommendedMovies)
             }, function(err) {
               console.error('Error');
             })
       }
+
+      // function getSearch() {
+      //   console.log('kablam', vm.search)
+      //   $http.get('/search?q=' + vm.search)
+      //     .then(function(res) {
+      //       console.log('search here', res);
+      //       movieService.addMovies(res.data.results);
+      //       $state.go('searchResultsPage');
+      //     }, function(err) {
+      //       console.error('Error');
+      //     })
+      // }
 
       // ============================
       function getPopularTv() {

@@ -6,13 +6,15 @@
 
   function movieService() {
     var movieService = {};
-    movieService.Movies = [];
+    movieService.Movies;
     movieService.SelectedMovie;
     movieService.SelectedMovieType;
     movieService.SelectedCategory;
 
+    movieService.query;
+
     movieService.addMovies = function(List) {
-      movieService.Movies.push(List);
+      movieService.Movies = List;
     };
 
     movieService.getMovies = function(){

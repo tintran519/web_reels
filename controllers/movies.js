@@ -1,6 +1,7 @@
 var request = require('request');
 const rootURL = 'https://api.themoviedb.org/3/movie/';
 const rootURLtv = 'https://api.themoviedb.org/3/tv/';
+const rootURLsearch = 'https://api.themoviedb.org/3/search/multi?'
 
 function movies (req, res) {
   console.log(req.query)
@@ -46,7 +47,7 @@ function featured(req, res) {
     var options = {
       url: rootURL + req.query.featured.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    console.log('here is my options', options)
+    // console.log('here is my options', options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });
@@ -60,16 +61,16 @@ function topRated(req, res) {
       url: rootURL + 'top_rated?' + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=' + id,
     };
     request(options, function(err, response, body) {
-      console.log('JS object here', JSON.parse(body).backdrop_path);
+      // console.log('JS object here', JSON.parse(body).backdrop_path);
       res.json(JSON.parse(body))
     });
   } else {
     var options = {
       url: rootURL + req.query.topRated.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    console.log('here is my options', options)
+    // console.log('here is my options', options)
     request(options, function(err, response, body) {
-      console.log('Top Rated req query JS Object here', JSON.parse(body))
+      // console.log('Top Rated req query JS Object here', JSON.parse(body))
       res.json(JSON.parse(body))
     });
   }
@@ -88,7 +89,9 @@ function popular(req, res) {
     var options = {
       url: rootURL + req.query.popular.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
+    console.log('jkljjljlkjl',options)
     request(options, function(err, response, body) {
+      console.log('lsjfls', body)
       res.json(JSON.parse(body))
     });
   }
@@ -101,9 +104,9 @@ function recommended(req, res) {
     var options = {
       url: rootURL + id +  '/recommendations?' +'api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
       };//options is the request we are sending aka api url
-    console.log(options)
+    // console.log(options)
     request(options, function(err, response, body) {
-      console.log('javascript here', JSON.parse(body).backdrop_path);
+      // console.log('javascript here', JSON.parse(body).backdrop_path);
       res.json(JSON.parse(body))
       // body is the response being sent back; body being sent back as string, then JSON.parse parses it into a javascript object, then sent as JSON syntax
     });
@@ -136,8 +139,18 @@ function tvPopular(req,res) {
     }
   }
 
+function search (req, res) {
+  var options = {
+    url: rootURLsearch + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&query=' + req.query.q,
+  };
+    console.log(options)
+    request(options, function(err, response, body) {
+      res.json(JSON.parse(body))
+    });
+}
 
 module.exports = {
   movies:movies,
-  tv:tv
+  tv:tv,
+  search: search
 }

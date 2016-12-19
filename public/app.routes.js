@@ -22,6 +22,11 @@
         templateUrl: 'templates/show.html',
         controller: 'ShowController as show'
       })
+      .state('searchResultsPage', {
+        url: '/search',
+        templateUrl: 'templates/searchResults.html',
+        controller: 'SearchResultsController as search'
+      })
   }
 
 })();
