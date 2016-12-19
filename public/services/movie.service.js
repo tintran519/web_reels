@@ -11,6 +11,8 @@
     movieService.SelectedMovieType;
     movieService.SelectedCategory;
 
+    movieService.query;
+
     movieService.addMovies = function(List) {
       movieService.Movies = List;
     };

@@ -16,14 +16,9 @@
 
       showSearch();
 
-      // getSearchResults();
-      // function getSearchResults () {
-      //     vm.searchResults = movieService.getMovies();
-      //     console.log('blah',vm.searchResults)
-      //   }
-
       function getSearch() {
         console.log('wazzah', vm.query)
+        movieService.query = vm.query
         $http.get('/search?q=' + vm.query)
           .then(function(res) {
             vm.searchResults = res.data.results;
@@ -39,6 +34,7 @@
 
       function showSearch() {
         vm.searchResults = movieService.getMovies();
+        vm.query = movieService.query;
       }
 
 

@@ -1,5 +1,6 @@
-<div class="contain movieList">
-    <h1>Search Results for {{ search.query }}</h1>
+<div id="searchWrapper">
+<div class="contain movieList container">
+    <h1>Search Results for "{{ search.query }}"</h1>
   <div class="row movieList">
     <div class="innerRow searchResults">
       <div ng-repeat="movie in search.searchResults" class="tile">
@@ -19,4 +20,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
