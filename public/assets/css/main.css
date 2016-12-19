@@ -78,7 +78,7 @@ body {
 }
 
 #sign-in, #sign-out {
-  margin: 10px 3% 0;
+  margin: 8px 8% 0;
   background-color: royalblue;
 }
 
@@ -208,3 +208,13 @@ body {
 }
 
 a { color: #00B7FF; }
+
+/*============================*/
+/*Search Results CSS*/
+.innerRow.searchResults {
+  white-space: normal;
+}
+
+
+
+
