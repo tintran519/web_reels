@@ -42,7 +42,7 @@
       }
 
       function getFeaturedMovies() {
-        $http.get('/movies?featured')
+        $http.get('/movie?featured')
           .then(function(res) {
             if (res.data.status_code === 34 || res.data.backdrop_path === null) {
               getFeaturedMovies();
@@ -70,7 +70,7 @@
       }
 
       function getTopMovies() {
-          return $http.get('/movies?topRated')
+          return $http.get('/movie?topRated')
             .then(function(res) {
               console.log('top movies', res);
               vm.topMovies = res.data.results;
@@ -81,7 +81,7 @@
       }
 
       function getPopularMovies() {
-          $http.get('/movies?popular')
+          $http.get('/movie?popular')
             .then(function(res) {
               console.log('top movies', res);
               vm.popularMovies = res.data.results;
@@ -92,7 +92,7 @@
       }
 
       function getRecommendedMovies() {
-          $http.get('/movies?recommended')
+          $http.get('/movie?recommended')
             .then(function(res) {
               console.log('recommeded object', res);
               if(res.data.status_code === 34 || res.data.status_code === 11 || res.data.total_results === 0) {

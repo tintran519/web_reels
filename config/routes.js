@@ -20,7 +20,7 @@ router.put('/users/:id',    AuthsCtrl.tokenVerify, usersController.update);
 router.delete('/users/:id', AuthsCtrl.tokenVerify, usersController.userDelete);
 
 // retrieving api data
-router.get('/movies', movieCtrl.movies);
+router.get('/movie', movieCtrl.movies);
 router.get('/tv', movieCtrl.tv);
 router.get('/search', movieCtrl.search);
 // router.post('/movies/watchlist', movieCtrl.addToWatchlist)
