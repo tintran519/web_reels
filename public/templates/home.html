@@ -153,6 +153,7 @@
       <div class="innerRow">
 
         <div ng-repeat="tv in vm.popularTv" class="tile">
+          <div ng-if="tv.backdrop_path">
           <div ng-click="vm.callToSelectedMovie('tv', tv,'popular')" ui-sref="showPage" class="tile__media">
             <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ tv.backdrop_path }}' alt=""  />
           </div>
@@ -160,6 +161,7 @@
             <div class="tileTitle">
               {{ tv.name }}
             </div>
+          </div>
           </div>
         </div>
     </div>
