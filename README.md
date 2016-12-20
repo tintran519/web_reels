@@ -7,9 +7,9 @@ This web application is a movie database that allows users to easily navigate th
 "Web Reels" is a MEAN stack application that uses Angular as its front-end frame work, Nodejs + Express as its back-end framework, and MongoDB as its database. Javascript, CSS, and HTML were the primary languages used in this project.
 
 ## Getting Started
-Visit the link below to view the app:
+Click [here](https://nameless-gorge-31214.herokuapp.com/#/home) to view the app.
 
-Once at the site, register for a free account and have fun exploring the database.
+Once at the site, register for a free account and have fun exploring the database!
 
 ## Next Steps
 Additional features and functionalities must be added to this application in order to make it comparable to other movie databases on the net. The following list contains pending upgrades for the near future:
