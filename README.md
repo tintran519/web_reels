@@ -14,10 +14,9 @@ Once at the site, register for a free account and have fun exploring the databas
 ## Next Steps
 Additional features and functionalities must be added to this application in order to make it comparable to other movie databases on the net. The following list contains pending upgrades for the near future:
 
-* Incorporating a search function to query specific films
 * Allow users to create a watchlist 
 * Add a rating button that links to TMDB's overall ratings for a film
 * Add profile images and information for the cast
-* Include additional information on a movie in the about section
+* Include additional information on a movie such as revenue in the about section
 
 
