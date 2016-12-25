@@ -44,3 +44,25 @@
     </div>
   </div>
 </div>
+<!-- Related Movies/Shows -->
+<div class="contain movieList">
+    <h3 class="showHeader">Related Reels</h3>
+  <div class="row movieList">
+    <div class="innerRow">
+
+      <div ng-repeat="movie in show.relatedInfo" class="tile">
+        <div ng-if="movie.backdrop_path">
+          <div ng-click="show.callToSelectedMovie(vm.MediaCategory, movie,'popular')" ui-sref="showPage" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

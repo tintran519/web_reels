@@ -2,6 +2,7 @@ var request = require('request');
 const rootURL = 'https://api.themoviedb.org/3/movie/';
 const rootURLtv = 'https://api.themoviedb.org/3/tv/';
 const rootURLsearch = 'https://api.themoviedb.org/3/search/multi?'
+const rootURLrelatedMovie = 'https://api.themoviedb.org/3/discover/movie?';
 
 function movies (req, res) {
   console.log(req.query)
@@ -18,6 +19,9 @@ function movies (req, res) {
       break;
     case 'recommended':
       recommended(req, res);
+      break;
+    case 'related':
+      relatedMovies(req, res);
       break;
   }
 }
@@ -139,6 +143,7 @@ function tvPopular(req,res) {
     }
   }
 
+//Search function for queries
 function search (req, res) {
   var options = {
     url: rootURLsearch + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&query=' + req.query.q,
@@ -149,6 +154,15 @@ function search (req, res) {
     });
 }
 
+function relatedMovies (req,res) {
+  var options = {
+    url: rootURLrelatedMovie + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=' + req.query.related.genreId,
+  };
+    console.log(options)
+    request(options, function(err, response, body) {
+      res.json(JSON.parse(body))
+    });
+}
 module.exports = {
   movies:movies,
   tv:tv,
