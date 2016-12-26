@@ -1,8 +1,9 @@
 var request = require('request');
 const rootURL = 'https://api.themoviedb.org/3/movie/';
 const rootURLtv = 'https://api.themoviedb.org/3/tv/';
-const rootURLsearch = 'https://api.themoviedb.org/3/search/multi?'
+const rootURLsearch = 'https://api.themoviedb.org/3/search/multi?';
 const rootURLrelatedMovie = 'https://api.themoviedb.org/3/discover/movie?';
+const rootURLrelatedtv = 'https://api.themoviedb.org/3/discover/tv?';
 
 function movies (req, res) {
   console.log(req.query)
@@ -31,6 +32,9 @@ function tv (req, res) {
   switch(Object.keys(req.query)[0]) {
     case 'popular':
       tvPopular(req, res);
+      break;
+    case 'related':
+      relatedTv(req, res);
       break;
   }
 }
@@ -155,14 +159,27 @@ function search (req, res) {
 }
 
 function relatedMovies (req,res) {
+  var id = Math.floor(Math.random() * 100) + 10;
   var options = {
-    url: rootURLrelatedMovie + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=' + req.query.related.genreId,
+    url: rootURLrelatedMovie + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + id + '&with_genres=' + req.query.related.genreId,
   };
     console.log(options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });
 }
+
+function relatedTv (req,res) {
+  var id = Math.floor(Math.random() * 100) + 10;
+  var options = {
+    url: rootURLrelatedtv + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&page=' + id + '&timezone=America/New_York&with_genres=' + req.query.related.genreId + '&include_null_first_air_dates=false',
+      };
+    console.log(options)
+    request(options, function(err, response, body) {
+      res.json(JSON.parse(body))
+    });
+}
+
 module.exports = {
   movies:movies,
   tv:tv,

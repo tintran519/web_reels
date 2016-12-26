@@ -5,9 +5,9 @@
     .module('webReels')
     .controller('ShowController', ShowController);
 
-    ShowController.$inject = ["movieService", "$http", "$sce"]
+    ShowController.$inject = ["movieService", "$http", "$sce", "$state"]
 
-    function ShowController(movieService, $http, $sce) {
+    function ShowController(movieService, $http, $sce, $state) {
       var vm = this;
 
       vm.parseTrailer = parseTrailer;
@@ -21,6 +21,7 @@
       vm.movieInfo = [];
 
       vm.relatedInfo;
+      vm.callToRelatedSelected = callToRelatedSelected;
 
       getMovieInfo();
       getRelatedInfo();
@@ -49,6 +50,13 @@
           }, function(err) {
             console.error('error')
           })
+      }
+
+      function callToRelatedSelected(category, movie, type){
+        movieService.SelectedMovie = movie;
+        movieService.SelectedMovieType = type;
+        movieService.SelectedCategory = category;
+        $state.go('showPage',{},{reload:true})
       }
 
       function parseTrailer(link){
