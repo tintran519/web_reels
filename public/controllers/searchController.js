@@ -25,9 +25,7 @@
             vm.searchResults = res.data.results;
             console.log('search here', vm.searchResults);
             movieService.addMovies(res.data.results);
-            // showSearch();
             $state.go('searchResultsPage',{},{reload:true})
-            // $state.reload();
           }, function(err) {
             console.error('Error');
           })

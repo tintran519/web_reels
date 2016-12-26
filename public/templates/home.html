@@ -132,12 +132,14 @@
       <div class="innerRow">
 
         <div ng-repeat="movie in vm.recommendedMovies" class="tile">
-          <div ng-click="vm.callToSelectedMovie('movie', movie,'recommended')" ui-sref="showPage" class="tile__media">
-            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
-          </div>
-          <div class="tile__details">
-            <div class="tileTitle">
-              {{ movie.title }}
+          <div ng-if="movie.backdrop_path">
+            <div ng-click="vm.callToSelectedMovie('movie', movie,'recommended')" ui-sref="showPage" class="tile__media">
+              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+            </div>
+            <div class="tile__details">
+              <div class="tileTitle">
+                {{ movie.title }}
+              </div>
             </div>
           </div>
         </div>

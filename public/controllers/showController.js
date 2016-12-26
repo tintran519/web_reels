@@ -5,9 +5,9 @@
     .module('webReels')
     .controller('ShowController', ShowController);
 
-    ShowController.$inject = ["movieService", "$http", "$sce"]
+    ShowController.$inject = ["movieService", "$http", "$sce", "$state"]
 
-    function ShowController(movieService, $http, $sce) {
+    function ShowController(movieService, $http, $sce, $state) {
       var vm = this;
 
       vm.parseTrailer = parseTrailer;
@@ -16,10 +16,15 @@
       vm.MovieId = movieService.SelectedMovie.id;
       vm.MovieCategory = movieService.SelectedMovieType;
       vm.MediaCategory = movieService.SelectedCategory;
+      vm.GenreId = movieService.SelectedMovie.genre_ids[0];
 
       vm.movieInfo = [];
 
+      vm.relatedInfo;
+      vm.callToRelatedSelected = callToRelatedSelected;
+
       getMovieInfo();
+      getRelatedInfo();
 
       console.log(movieService.SelectedMovie)
       // console.log('here is the type', movieService.SelectedMovieType)
@@ -34,6 +39,24 @@
           }, function(err) {
             console.error('error')
           })
+      }
+
+      function getRelatedInfo() {
+        $http.get(`/${vm.MediaCategory}?related[genreId]=${vm.GenreId}`)
+          .then(function(res) {
+            console.log('related info', res);
+            vm.relatedInfo = res.data.results;
+            console.log(vm.relatedInfo);
+          }, function(err) {
+            console.error('error')
+          })
+      }
+
+      function callToRelatedSelected(category, movie, type){
+        movieService.SelectedMovie = movie;
+        movieService.SelectedMovieType = type;
+        movieService.SelectedCategory = category;
+        $state.go('showPage',{},{reload:true})
       }
 
       function parseTrailer(link){
