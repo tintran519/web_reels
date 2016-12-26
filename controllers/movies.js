@@ -159,7 +159,7 @@ function search (req, res) {
 }
 
 function relatedMovies (req,res) {
-  var id = Math.floor(Math.random() * 100) + 10;
+  var id = Math.floor(Math.random() * 10) + 10;
   var options = {
     url: rootURLrelatedMovie + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + id + '&with_genres=' + req.query.related.genreId,
   };
@@ -170,7 +170,7 @@ function relatedMovies (req,res) {
 }
 
 function relatedTv (req,res) {
-  var id = Math.floor(Math.random() * 100) + 10;
+  var id = Math.floor(Math.random() * 10) + 10;
   var options = {
     url: rootURLrelatedtv + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&page=' + id + '&timezone=America/New_York&with_genres=' + req.query.related.genreId + '&include_null_first_air_dates=false',
       };

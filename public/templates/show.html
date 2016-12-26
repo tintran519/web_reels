@@ -39,7 +39,10 @@
       <h3 class="showHeader">Full Cast & Crew</h3>
     <div id="castInfo">
       <div ng-repeat="cast in show.movieInfo.credits.cast">
-        <p><span>{{ cast.name }}</span> as {{ cast.character }}</p>
+        <p>
+          <img id="castImage" ng-src='https://image.tmdb.org/t/p/w45/{{ cast.profile_path }}' alt=""  />
+          <span>{{ cast.name }}</span> as {{ cast.character }}
+        </p>
       </div>
     </div>
   </div>

@@ -218,6 +218,10 @@ body {
   color: red;
 }
 
+#castImage {
+  border: 1px solid gold;
+  border-radius: 12%;
+}
 a { color: #00B7FF; }
 
 /*============================*/
