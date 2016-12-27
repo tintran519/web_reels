@@ -27,6 +27,11 @@
         templateUrl: 'templates/searchResults.html',
         controller: 'SearchResultsController as search'
       })
+      .state('watchListPage', {
+        url: '/watchList',
+        templateUrl: 'templates/watchList.html',
+        controller: 'WatchListController as watch'
+      })
   }
 
 })();

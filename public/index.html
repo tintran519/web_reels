@@ -42,6 +42,9 @@
               Sign in
             </button>
           </li>
+<!--           <li ng-show="vm.isLoggedIn()">
+            <a role='button' id="watchList" ui-sref="watchListPage">Watch List</a>
+          </li> -->
           <li ng-show="vm.isLoggedIn()" ng-controller="SearchResultsController as search">
             <form class="navbar-form navbar-right" role="search">
               <div class="form-group">
@@ -78,6 +81,8 @@
   <script src="controllers/mainController.js"></script>
   <script src="controllers/showController.js"></script>
   <script src="controllers/searchController.js"></script>
+  <script src="controllers/watchListController.js"></script>
+
 
   <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/3d040d79da.js"></script>

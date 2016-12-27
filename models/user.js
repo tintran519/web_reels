@@ -7,8 +7,13 @@ var mongoose = require('mongoose'),
 var userSchema = new mongoose.Schema({
   name:   { type: String, required: true },
   email:  { type: String, required: true },
-  password: { type: String, required: true, select: false }
-  // watchlist: []
+  password: { type: String, required: true, select: false },
+  watchlist: []
+  // {
+  //   id: Number,
+  //   name: String,
+  //   image_url: String
+  // }
 });
 
 //exclude password
