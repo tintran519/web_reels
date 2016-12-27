@@ -16,7 +16,8 @@
       vm.MovieId = movieService.SelectedMovie.id;
       vm.MovieCategory = movieService.SelectedMovieType;
       vm.MediaCategory = movieService.SelectedCategory;
-      vm.GenreId = movieService.SelectedMovie.genre_ids[0];
+      // vm.GenreId = movieService.SelectedMovie.genre_ids[0] || movieService.SelectedMovie.genre[0].id;
+      vm.GenreId = movieService.SelectedGenre;
 
       vm.movieInfo = [];
 
@@ -26,7 +27,7 @@
       getMovieInfo();
       getRelatedInfo();
 
-      console.log(movieService.SelectedMovie)
+      console.log('selected movie', movieService.SelectedMovie)
       // console.log('here is the type', movieService.SelectedMovieType)
       // console.log('the ID', vm.MovieId)
 
@@ -42,6 +43,7 @@
       }
 
       function getRelatedInfo() {
+        console.log(vm.GenreId)
         $http.get(`/${vm.MediaCategory}?related[genreId]=${vm.GenreId}`)
           .then(function(res) {
             console.log('related info', res);
@@ -52,10 +54,11 @@
           })
       }
 
-      function callToRelatedSelected(category, movie, type){
+      function callToRelatedSelected(category, movie, type, genre){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
         movieService.SelectedCategory = category;
+        movieService.SelectedGenre = genre;
         $state.go('showPage',{},{reload:true})
       }
 

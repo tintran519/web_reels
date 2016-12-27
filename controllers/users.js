@@ -6,7 +6,26 @@ var User = require("../models/user");
     topSecret = env.topSecret;
 
 // Add to watchlist
-function addToWatchlist (req, res) {
+var addToWatchlist = function(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    if (err) res.send(err);
+
+    var movie = {
+      id: req.body.id,
+      name: req.body.name,
+      image_url: req.body.image_url
+    }
+
+    user.watchlist.push(movie);
+
+    user.save(function(err, savedUser){
+      if (err) {
+        res.send(err)
+      }
+      console.log('movie added to watchlist');
+      res.json(savedUser);
+    })
+  })
   // get user by id
   // req.body should contain movie { id,name,image_url } to add to watchlist
   // add movie object { id,name,image_url } to user.watchlists array
@@ -105,5 +124,6 @@ module.exports = {
   show:       show,
   create:     create,
   update:     update,
-  userDelete: userDelete
+  userDelete: userDelete,
+  addToWatchlist: addToWatchlist
 };

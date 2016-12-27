@@ -10,6 +10,7 @@
     movieService.SelectedMovie;
     movieService.SelectedMovieType;
     movieService.SelectedCategory;
+    movieService.SelectedGenre;
 
     movieService.query;
 

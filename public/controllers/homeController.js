@@ -35,10 +35,11 @@
       getRecommendedMovies();
       getPopularTv();
 
-      function callToSelectedMovie(category, movie, type){
+      function callToSelectedMovie(category, movie, type, genre){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
         movieService.SelectedCategory = category;
+        movieService.SelectedGenre = genre;
       }
 
       function getFeaturedMovies() {
@@ -52,7 +53,7 @@
               // return;
             } else {
               vm.featuredMovies = res;
-              console.log(vm.featuredMovies);
+              console.log('featured', vm.featuredMovies);
               vm.featuredMovies.title = res.data.title;
               vm.featuredMovies.overview = res.data.overview;
               vm.movieImage = res.data.backdrop_path;

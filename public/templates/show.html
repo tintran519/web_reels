@@ -17,6 +17,7 @@
         <p ng-if="show.movieInfo.runtime"><i class="fa fa-clock-o" aria-hidden="true"></i>Run Time: {{ show.movieInfo.runtime }}min</p>
         <p ng-if="show.movieInfo.number_of_seasons">Seasons: {{ show.movieInfo.number_of_seasons }}</p>
         <p ng-if="show.movieInfo.number_of_episodes">Episodes: {{ show.movieInfo.number_of_episodes }}</p>
+        <button>Add to WatchList</button>
     </div>
   </div>
 </div>
@@ -55,7 +56,7 @@
 
       <div ng-repeat="movie in show.relatedInfo" class="tile">
         <div ng-if="movie.backdrop_path">
-          <div ng-click="show.callToRelatedSelected(show.MediaCategory, movie,'popular')" ui-sref="showPage" class="tile__media">
+          <div ng-click="show.callToRelatedSelected(show.MediaCategory, movie,'popular', movie.genre_ids[0])" ui-sref="showPage" class="tile__media">
             <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
           </div>
           <div class="tile__details">
