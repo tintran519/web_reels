@@ -71,6 +71,7 @@
       }
 
       function getTopMovies() {
+          // console.log(userDataService.user)get id here!
           return $http.get('/movie?topRated')
             .then(function(res) {
               console.log('top movies', res);
