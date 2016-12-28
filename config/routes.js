@@ -18,7 +18,7 @@ router.post('/users',                              usersController.create);
 router.get('/users/:id',    AuthsCtrl.tokenVerify, usersController.show);
 router.put('/users/:id',    AuthsCtrl.tokenVerify, usersController.update);
 router.delete('/users/:id', AuthsCtrl.tokenVerify, usersController.userDelete);
-router.post('/users/:id',                          usersController.addToWatchlist)
+router.post('/users/:id/watchlist',                usersController.addToWatchlist)
 
 // retrieving api data
 router.get('/movie', movieCtrl.movies);

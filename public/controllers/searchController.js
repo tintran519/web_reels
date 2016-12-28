@@ -18,7 +18,6 @@
       showSearch();
 
       function getSearch() {
-        console.log('wazzah', vm.query)
         movieService.query = vm.query
         $http.get('/search?q=' + vm.query)
           .then(function(res) {
@@ -36,11 +35,11 @@
         vm.query = movieService.query;
       }
 
-      function callToSelectedSearchedMovie(category, movie, type){
+      function callToSelectedSearchedMovie(category, movie, type, genre){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
         movieService.SelectedCategory = category;
-        console.log(category, movie, type);
+        movieService.SelectedGenre = genre;
       }
 
     }
