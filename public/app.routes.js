@@ -18,7 +18,7 @@
         controller: 'LoginController as vm'
       })
       .state('showPage', {
-        url: '/movie/:id',
+        url: '/:media/:id',
         templateUrl: 'templates/show.html',
         controller: 'ShowController as show'
       })

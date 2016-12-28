@@ -12,8 +12,7 @@ var addToWatchlist = function(req, res) {
 
     var movie = {
       id: req.body.id,
-      name: req.body.name,
-      image_url: req.body.image_url
+      media: req.body.media
     }
 
     user.watchlist.push(movie);
