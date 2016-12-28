@@ -69,16 +69,13 @@ function topRated(req, res) {
       url: rootURL + 'top_rated?' + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&page=' + id,
     };
     request(options, function(err, response, body) {
-      // console.log('JS object here', JSON.parse(body).backdrop_path);
       res.json(JSON.parse(body))
     });
   } else {
     var options = {
       url: rootURL + req.query.topRated.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    // console.log('here is my options', options)
     request(options, function(err, response, body) {
-      // console.log('Top Rated req query JS Object here', JSON.parse(body))
       res.json(JSON.parse(body))
     });
   }
@@ -112,7 +109,6 @@ function recommended(req, res) {
     var options = {
       url: rootURL + id +  '/recommendations?' +'api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
       };//options is the request we are sending aka api url
-    // console.log(options)
     request(options, function(err, response, body) {
       // console.log('javascript here', JSON.parse(body).backdrop_path);
       res.json(JSON.parse(body))
@@ -152,7 +148,6 @@ function search (req, res) {
   var options = {
     url: rootURLsearch + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&query=' + req.query.q,
   };
-    console.log(options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });
@@ -163,7 +158,6 @@ function relatedMovies (req,res) {
   var options = {
     url: rootURLrelatedMovie + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + id + '&with_genres=' + req.query.related.genreId,
   };
-    console.log(options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });
@@ -174,7 +168,6 @@ function relatedTv (req,res) {
   var options = {
     url: rootURLrelatedtv + 'api_key=' + process.env.TMDB_API_KEY + '&language=en-US&sort_by=popularity.desc&page=' + id + '&timezone=America/New_York&with_genres=' + req.query.related.genreId + '&include_null_first_air_dates=false',
       };
-    console.log(options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });

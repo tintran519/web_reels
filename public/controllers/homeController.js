@@ -63,7 +63,6 @@
             console.error('Error retrieving movie');
           })
           .then(function(res) {
-            console.log('movieImage link', res);
             $('.jumbotron.home').css('background-image', `url(https://image.tmdb.org/t/p/original${res})`);
           }, function(err) {
             console.error('Error');
@@ -76,7 +75,6 @@
             .then(function(res) {
               console.log('top movies', res);
               vm.topMovies = res.data.results;
-              console.log('top here', vm.topMovies)
             }, function(err) {
               console.error('Error');
             })
@@ -101,23 +99,11 @@
                 getRecommendedMovies();
               }
               vm.recommendedMovies = res.data.results;
-              console.log('rec here', vm.recommendedMovies)
             }, function(err) {
               console.error('Error');
             })
       }
 
-      // function getSearch() {
-      //   console.log('kablam', vm.search)
-      //   $http.get('/search?q=' + vm.search)
-      //     .then(function(res) {
-      //       console.log('search here', res);
-      //       movieService.addMovies(res.data.results);
-      //       $state.go('searchResultsPage');
-      //     }, function(err) {
-      //       console.error('Error');
-      //     })
-      // }
 
       // ============================
       function getPopularTv() {
