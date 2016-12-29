@@ -94,9 +94,7 @@ function popular(req, res) {
     var options = {
       url: rootURL + req.query.popular.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    console.log('jkljjljlkjl',options)
     request(options, function(err, response, body) {
-      console.log('lsjfls', body)
       res.json(JSON.parse(body))
     });
   }

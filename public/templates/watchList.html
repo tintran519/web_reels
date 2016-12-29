@@ -1,1 +1,24 @@
-<h1>My Watchlist</h1>
+<div id="searchWrapper">
+<div class="contain movieList container">
+    <h1>My Watch</h1>
+  <div class="row movieList">
+    <div class="innerRow searchResults">
+      <div ng-repeat="movie in watch.watchList" class="tile">
+        <div ng-if="movie.backdrop_path">
+            <div ng-click="search.callToSelectedSearchedMovie(movie.media_type, movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:movie.media_type ,id:movie.id})" class="tile__media">
+              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+            </div>
+          <div class="tile__details">
+            <div ng-if="movie.title" class="tileTitle">
+              {{ movie.title }}
+            </div>
+            <div ng-if="movie.original_name" class="tileTitle">
+              {{ movie.original_name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

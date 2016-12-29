@@ -5,27 +5,37 @@
     .module('webReels')
     .controller('ShowController', ShowController);
 
-    ShowController.$inject = ["movieService", "$http", "$sce", "$state"]
+    ShowController.$inject = ["movieService", "$http", "$sce", "$state","userDataService"]
 
-    function ShowController(movieService, $http, $sce, $state) {
+    function ShowController(movieService, $http, $sce, $state, userDataService) {
       var vm = this;
 
+      //Function to parse youtube link
       vm.parseTrailer = parseTrailer;
-      vm.Movies = movieService.getMovies();
+
+      //Display all movies from service
+      // vm.Movies = movieService.getMovies();
+
+      //Selected movie info
       vm.SelectedMovie = movieService.SelectedMovie;
       vm.MovieId = movieService.SelectedMovie.id;
       vm.MovieCategory = movieService.SelectedMovieType;
       vm.MediaCategory = movieService.SelectedCategory;
-      // vm.GenreId = movieService.SelectedMovie.genre_ids[0] || movieService.SelectedMovie.genre[0].id;
       vm.GenreId = movieService.SelectedGenre;
 
+      //Array that stores movie
       vm.movieInfo = [];
 
+      //Related Reels
       vm.relatedInfo;
       vm.callToRelatedSelected = callToRelatedSelected;
 
+      //Functions to run when page loads to display movies
       getMovieInfo();
       getRelatedInfo();
+
+      //Add movie to watchlist
+      vm.addToWatchList = addToWatchList;
 
       console.log('selected movie', movieService.SelectedMovie)
       // console.log('here is the type', movieService.SelectedMovieType)
@@ -60,6 +70,14 @@
         movieService.SelectedCategory = category;
         movieService.SelectedGenre = genre;
         $state.go('showPage',{},{reload:true})
+      }
+
+      function addToWatchList(){
+        var id = userDataService.user._id;
+        $http.post('/users/' + id + '/watchlist', {
+          id: vm.MovieId,
+          media: vm.MediaCategory
+        })
       }
 
       function parseTrailer(link){
