@@ -5,7 +5,7 @@
     <div class="innerRow searchResults">
       <div ng-repeat="movie in watch.watchList" class="tile">
         <div ng-if="movie.backdrop_path">
-            <div ng-click="search.callToSelectedSearchedMovie(movie.media_type, movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:movie.media_type ,id:movie.id})" class="tile__media">
+            <div ng-click="watch.callToSelectedWatchListMovie(movie,'popular', movie.genres[0].id)" ui-sref="showPage({media:movie.media_type ,id:movie.id})" class="tile__media">
               <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
             </div>
           <div class="tile__details">

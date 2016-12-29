@@ -13,6 +13,8 @@
     vm.watchList = [];
     vm.token = authToken.getToken();
 
+    vm.callToSelectedWatchListMovie = callToSelectedWatchListMovie;
+
     getWatchList();
 
     function getWatchList(){
@@ -37,6 +39,17 @@
           console.error('error with initiating loop', err);
         })
         console.log('here is the watchlist',vm.watchList);
+      }
+
+      function callToSelectedWatchListMovie(movie, type, genre){
+        movieService.SelectedMovie = movie;
+        movieService.SelectedMovieType = type;
+        if(movie.title){
+          movieService.SelectedCategory = 'movie';
+        }else{
+          movieService.SelectedCategory = 'tv';
+        }
+        movieService.SelectedGenre = genre;
       }
     }
 })();
