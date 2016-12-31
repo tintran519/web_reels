@@ -51,5 +51,6 @@
         }
         movieService.SelectedGenre = genre;
       }
+
     }
 })();

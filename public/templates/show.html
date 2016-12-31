@@ -18,6 +18,7 @@
         <p ng-if="show.movieInfo.number_of_seasons">Seasons: {{ show.movieInfo.number_of_seasons }}</p>
         <p ng-if="show.movieInfo.number_of_episodes">Episodes: {{ show.movieInfo.number_of_episodes }}</p>
         <button ng-click="show.addToWatchList()" data-toggle="modal" data-target="#confirmModal">Add to WatchList</button>
+        <button ng-click="show.removeReelFromWatchList()">Remove WatchList</button>
     </div>
   </div>
 </div>
@@ -73,7 +74,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Reel Added Modal -->
 <div id="confirmModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 

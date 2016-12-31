@@ -42,6 +42,24 @@ var addToWatchlist = function(req, res) {
   // add movie object { id,name,image_url } to user.watchlists array
   // save
 }
+
+var removeFromWatchlist = function(req, res) {
+  User.findById(req.params.id, function(err,user) {
+    if (err) res.send(err);
+
+    var movie = {
+      id: req.body.id,
+      media: req.body.media
+    }
+
+    User.update({},{$pull: {watchlist: { id: movie.id, media: movie.media }}},
+      { multi: true },function(err,updatedUser){
+        if (err) res.send('error with deletion',err)
+
+          res.json({ message: 'Reel removed from watchlist!' })
+      })
+  })
+}
 //===============
 //Get all users
 var index = function(req, res){
@@ -136,5 +154,6 @@ module.exports = {
   create:     create,
   update:     update,
   userDelete: userDelete,
-  addToWatchlist: addToWatchlist
+  addToWatchlist: addToWatchlist,
+  removeFromWatchlist: removeFromWatchlist
 };

@@ -34,8 +34,9 @@
       getMovieInfo();
       getRelatedInfo();
 
-      //Add movie to watchlist
+      //Add & remove movie to/from watchlist
       vm.addToWatchList = addToWatchList;
+      vm.removeReelFromWatchList = removeReelFromWatchList;
 
       console.log('selected movie', movieService.SelectedMovie)
       // console.log('here is the type', movieService.SelectedMovieType)
@@ -75,6 +76,14 @@
       function addToWatchList(){
         var id = userDataService.user._id;
         $http.post('/users/' + id + '/watchlist', {
+          id: vm.MovieId,
+          media: vm.MediaCategory
+        })
+      }
+
+      function removeReelFromWatchList(){
+        var id = userDataService.user._id;
+        $http.put('/users/' + id + '/watchlist' + '?token=' + vm.token, {
           id: vm.MovieId,
           media: vm.MediaCategory
         })
