@@ -17,7 +17,7 @@
         <p ng-if="show.movieInfo.runtime"><i class="fa fa-clock-o" aria-hidden="true"></i>Run Time: {{ show.movieInfo.runtime }}min</p>
         <p ng-if="show.movieInfo.number_of_seasons">Seasons: {{ show.movieInfo.number_of_seasons }}</p>
         <p ng-if="show.movieInfo.number_of_episodes">Episodes: {{ show.movieInfo.number_of_episodes }}</p>
-        <button ng-click="show.addToWatchList()">Add to WatchList</button>
+        <button ng-click="show.addToWatchList()" data-toggle="modal" data-target="#confirmModal">Add to WatchList</button>
     </div>
   </div>
 </div>
@@ -73,3 +73,22 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div id="confirmModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content showPage">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Reel added to watchlist</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -15,15 +15,27 @@ var addToWatchlist = function(req, res) {
       media: req.body.media
     }
 
-    user.watchlist.push(movie);
-
-    user.save(function(err, savedUser){
-      if (err) {
-        res.send(err)
+    function checkReel(newId,newMedia){
+      var found = user.watchlist.some(function (el){
+        return el.id === newId && el.media === newMedia;
+        })
+      if (!found) {
+      user.watchlist.push(movie);
+      console.log('new reel added');
+      user.save(function(err, savedUser){
+        if (err) {
+          res.send(err)
+        }
+        console.log('movie added to watchlist');
+        res.json(savedUser);
+      })
+      }else{
+        console.log('reel already in list');
       }
-      console.log('movie added to watchlist');
-      res.json(savedUser);
-    })
+    }
+
+    checkReel(movie.id,movie.media);
+
   })
   // get user by id
   // req.body should contain movie { id,name,image_url } to add to watchlist
