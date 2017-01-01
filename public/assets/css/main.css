@@ -236,6 +236,15 @@ body {
   border: 1px solid gold;
   border-radius: 12%;
 }
+
+#removeWatch {
+  background-color: #a00c0c;
+}
+
+#addWatch {
+  background-color: #098f90;
+}
+
 a { color: #00B7FF; }
 
 /*============================*/

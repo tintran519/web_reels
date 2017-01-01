@@ -6,7 +6,7 @@
 
   function movieService() {
     var movieService = {};
-    movieService.Movies;
+    // movieService.Movies;
     movieService.SelectedMovie;
     movieService.SelectedMovieType;
     movieService.SelectedCategory;
