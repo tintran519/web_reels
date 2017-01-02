@@ -190,8 +190,10 @@ body {
 }
 
 #showContent {
-  right: 11%;
+  right: 9%;
+  margin-bottom: 2%;
 }
+
 .container.showBlock {
   background-color: #002f46;
   margin: 0px;
@@ -247,6 +249,11 @@ body {
 
 a { color: #00B7FF; }
 
+@media screen and (max-width: 991px) {
+    #showContent {
+        right: 0%;
+    }
+}
 /*============================*/
 /*Search Results CSS*/
 .innerRow.searchResults {

@@ -20,7 +20,10 @@
       vm.MediaCategory = movieService.SelectedCategory;
       vm.GenreId = movieService.SelectedGenre;
 
+      //Get user token
       vm.token = authToken.getToken();
+
+      //user watchlist
       vm.watchList;
 
       //Array that stores movie
@@ -34,7 +37,9 @@
       getMovieInfo();
       getRelatedInfo();
 
+      //Retrieve user's watchlist
       getWatchList();
+
       //Add & remove movie to/from watchlist
       vm.addToWatchList = addToWatchList;
       vm.removeReelFromWatchList = removeReelFromWatchList;
@@ -44,14 +49,9 @@
       //boolean to check if reel is in watchlist
       vm.alreadyInWatchList;
 
-      //close add to watchlist modal
-      vm.closeModal = closeModal;
-
       function getMovieInfo() {
-        console.log(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
         $http.get(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
           .then(function(res) {
-            console.log('here is the movie info',res);
             vm.movieInfo = res.data;
           }, function(err) {
             console.error('error')
@@ -59,12 +59,9 @@
       }
 
       function getRelatedInfo() {
-        console.log(vm.GenreId)
         $http.get(`/${vm.MediaCategory}?related[genreId]=${vm.GenreId}`)
           .then(function(res) {
-            console.log('related info', res);
             vm.relatedInfo = res.data.results;
-            console.log(vm.relatedInfo);
           }, function(err) {
             console.error('error')
           })
@@ -102,11 +99,8 @@
         var id = userDataService.user._id;
         $http.get('/users/' + id + '?token=' + vm.token)
         .then(function(res){
-          console.log('user info', res);
           vm.watchList = res.data.watchlist;
-          console.log('watchList', vm.watchList);
           checkReel(vm.MovieId,vm.MediaCategory);
-          console.log('checker', vm.alreadyInWatchList);
         }, function(err) {
           console.error('error attaining user info',err);
         })
@@ -117,10 +111,6 @@
           return el.id === reelId && el.media === reelMedia;
           })
         vm.alreadyInWatchList = found;
-      }
-
-      function closeModal(){
-        $('#confirmModal').modal('hide');
       }
 
       function parseTrailer(link){

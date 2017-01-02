@@ -1,11 +1,11 @@
 <div id="showPage" ng-cloak>
 <div class="container showBlock">
   <div class="row">
-    <div class="col-xs-6" id="showImage">
+    <div class="col-md-6" id="showImage">
       <img ng-src='https://image.tmdb.org/t/p/w300/{{ show.SelectedMovie.poster_path }}' alt=""  />
     </div>
 
-    <div class="col-xs-6" id="showContent">
+    <div class="col-md-6" id="showContent">
       <h1 ng-if="show.SelectedMovie.name" id="ShowMovieTitle">{{ show.SelectedMovie.name }}</h1><br>
       <h1 ng-if="show.SelectedMovie.title" id="ShowMovieTitle">{{ show.SelectedMovie.title }}</h1><br>
       <h4 ng-if="show.movieInfo.release_date">Release Date: {{ show.movieInfo.release_date }}</h4>
@@ -71,25 +71,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Reel Added Modal -->
-<div id="confirmModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content showPage">
-      <div class="modal-header">
-        <button type="button" class="close">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>Reel added to watchlist</p>
-      </div>
-      <div class="modal-footer">
-        <button ng-click=show.closeModal() type="button" class="btn btn-default">Close</button>
-      </div>
-    </div>
-
   </div>
 </div>

@@ -37,10 +37,6 @@ var addToWatchlist = function(req, res) {
     checkReel(movie.id,movie.media);
 
   })
-  // get user by id
-  // req.body should contain movie { id,name,image_url } to add to watchlist
-  // add movie object { id,name,image_url } to user.watchlists array
-  // save
 }
 
 var removeFromWatchlist = function(req, res) {

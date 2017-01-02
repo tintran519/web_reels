@@ -13,6 +13,7 @@
     vm.watchList = [];
     vm.token = authToken.getToken();
 
+    //Function to add selected watchlist movie to showpage
     vm.callToSelectedWatchListMovie = callToSelectedWatchListMovie;
 
     getWatchList();
@@ -21,7 +22,6 @@
       var id = userDataService.user._id;
       $http.get('/users/' + id + '?token=' + vm.token)
       .then(function(res){
-        console.log('user info', res);
         return res;
       }, function(err) {
         console.error('error attaining user info',err);
@@ -38,7 +38,6 @@
       }, function(err) {
           console.error('error with initiating loop', err);
         })
-        console.log('here is the watchlist',vm.watchList);
       }
 
       function callToSelectedWatchListMovie(movie, type, genre){

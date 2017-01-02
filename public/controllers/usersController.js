@@ -22,10 +22,8 @@
             authToken.setToken(data.data.token);
             userDataService.user = data.data.user;
             console.log('user created')
-            // $state.go('homePage');
           }, function(err) {
             $log.error(err);
-            // $state.go('homePage');
           });
       };
     };
