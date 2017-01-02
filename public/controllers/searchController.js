@@ -22,8 +22,8 @@
         $http.get('/search?q=' + vm.query)
           .then(function(res) {
             vm.searchResults = res.data.results;
-            console.log('search here', vm.searchResults);
             movieService.addMovies(res.data.results);
+            vm.query = "";
             $state.go('searchResultsPage',{},{reload:true})
           }, function(err) {
             console.error('Error');

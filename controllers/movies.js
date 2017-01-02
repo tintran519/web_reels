@@ -55,7 +55,6 @@ function featured(req, res) {
     var options = {
       url: rootURL + req.query.featured.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    // console.log('here is my options', options)
     request(options, function(err, response, body) {
       res.json(JSON.parse(body))
     });
@@ -94,9 +93,7 @@ function popular(req, res) {
     var options = {
       url: rootURL + req.query.popular.movieId + '?api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
     };
-    console.log('jkljjljlkjl',options)
     request(options, function(err, response, body) {
-      console.log('lsjfls', body)
       res.json(JSON.parse(body))
     });
   }
@@ -110,7 +107,6 @@ function recommended(req, res) {
       url: rootURL + id +  '/recommendations?' +'api_key=' + process.env.TMDB_API_KEY + '&append_to_response=videos,credits',
       };//options is the request we are sending aka api url
     request(options, function(err, response, body) {
-      // console.log('javascript here', JSON.parse(body).backdrop_path);
       res.json(JSON.parse(body))
       // body is the response being sent back; body being sent back as string, then JSON.parse parses it into a javascript object, then sent as JSON syntax
     });
@@ -153,6 +149,7 @@ function search (req, res) {
     });
 }
 
+//Run related reel requests
 function relatedMovies (req,res) {
   var id = Math.floor(Math.random() * 10) + 10;
   var options = {

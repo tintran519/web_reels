@@ -5,37 +5,53 @@
     .module('webReels')
     .controller('ShowController', ShowController);
 
-    ShowController.$inject = ["movieService", "$http", "$sce", "$state"]
+    ShowController.$inject = ["movieService", "$http", "$sce", "$state", "userDataService", "authToken"]
 
-    function ShowController(movieService, $http, $sce, $state) {
+    function ShowController(movieService, $http, $sce, $state, userDataService, authToken) {
       var vm = this;
 
+      //Function to parse youtube link
       vm.parseTrailer = parseTrailer;
-      vm.Movies = movieService.getMovies();
+
+      //Selected movie info
       vm.SelectedMovie = movieService.SelectedMovie;
       vm.MovieId = movieService.SelectedMovie.id;
       vm.MovieCategory = movieService.SelectedMovieType;
       vm.MediaCategory = movieService.SelectedCategory;
-      // vm.GenreId = movieService.SelectedMovie.genre_ids[0] || movieService.SelectedMovie.genre[0].id;
       vm.GenreId = movieService.SelectedGenre;
 
+      //Get user token
+      vm.token = authToken.getToken();
+
+      //user watchlist
+      vm.watchList;
+
+      //Array that stores movie
       vm.movieInfo = [];
 
+      //Related Reels
       vm.relatedInfo;
       vm.callToRelatedSelected = callToRelatedSelected;
 
+      //Functions to run when page loads to display movies
       getMovieInfo();
       getRelatedInfo();
 
+      //Retrieve user's watchlist
+      getWatchList();
+
+      //Add & remove movie to/from watchlist
+      vm.addToWatchList = addToWatchList;
+      vm.removeReelFromWatchList = removeReelFromWatchList;
+
       console.log('selected movie', movieService.SelectedMovie)
-      // console.log('here is the type', movieService.SelectedMovieType)
-      // console.log('the ID', vm.MovieId)
+
+      //boolean to check if reel is in watchlist
+      vm.alreadyInWatchList;
 
       function getMovieInfo() {
-        console.log(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
         $http.get(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
           .then(function(res) {
-            console.log('here is the movie info',res);
             vm.movieInfo = res.data;
           }, function(err) {
             console.error('error')
@@ -43,12 +59,9 @@
       }
 
       function getRelatedInfo() {
-        console.log(vm.GenreId)
         $http.get(`/${vm.MediaCategory}?related[genreId]=${vm.GenreId}`)
           .then(function(res) {
-            console.log('related info', res);
             vm.relatedInfo = res.data.results;
-            console.log(vm.relatedInfo);
           }, function(err) {
             console.error('error')
           })
@@ -60,6 +73,44 @@
         movieService.SelectedCategory = category;
         movieService.SelectedGenre = genre;
         $state.go('showPage',{},{reload:true})
+      }
+
+      function addToWatchList(){
+        var id = userDataService.user._id;
+        $http.post('/users/' + id + '/watchlist', {
+          id: vm.MovieId,
+          media: vm.MediaCategory
+        }).then(function(){
+          $state.go('showPage',{},{reload:true})
+        });
+      }
+
+      function removeReelFromWatchList(){
+        var id = userDataService.user._id;
+        $http.put('/users/' + id + '/watchlist' + '?token=' + vm.token, {
+          id: vm.MovieId,
+          media: vm.MediaCategory
+        }).then(function(){
+          $state.go('showPage',{},{reload:true})
+        })
+      }
+
+      function getWatchList(){
+        var id = userDataService.user._id;
+        $http.get('/users/' + id + '?token=' + vm.token)
+        .then(function(res){
+          vm.watchList = res.data.watchlist;
+          checkReel(vm.MovieId,vm.MediaCategory);
+        }, function(err) {
+          console.error('error attaining user info',err);
+        })
+      }
+
+      function checkReel(reelId,reelMedia){
+        var found = vm.watchList.some(function (el){
+          return el.id === reelId && el.media === reelMedia;
+          })
+        vm.alreadyInWatchList = found;
       }
 
       function parseTrailer(link){
