@@ -1,5 +1,5 @@
 # Web Reels
-================================
+
 ## Description
 This web application is a movie database that allows users to easily navigate through the extensive film list that exists today. By utilizing TMDB's API, users can access a variety of information on movies from cast information to its average rating. 
 
