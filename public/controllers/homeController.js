@@ -3,7 +3,7 @@
 
   angular
     .module('webReels')
-    .controller('HomeController', HomeController);
+    .controller('HomeController', HomeController)
 
     HomeController.$inject = ["$state", "userDataService", "$log", "$http","$window","movieService"]
 
@@ -25,8 +25,14 @@
       getTopMovies();
       getPopularMovies();
       getRecommendedMovies();
-      getPopularTv();
+      getPopularTv()
 
+      //function for carousel; must set timeout to allow angular elements to load
+      setTimeout (function() {
+        owl();
+      },3000)
+
+      //function to save info on selected movie on home screen & display on show page
       function callToSelectedMovie(category, movie, type, genre){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
@@ -97,5 +103,31 @@
             console.error('Error');
           })
       }
+
+      function owl() {
+        $(".owl-carousel").owlCarousel({
+          loop:true,
+          margin:12,
+          nav:false,
+          dots:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:3
+              },
+              1000:{
+                  items:5
+              }
+            }
+        });
+      };
+
+      //filter function to filter null values in api calls
+      vm.notEmptyOrNull = function(item){
+        return !(item.backdrop_path === null || item.backdrop_path.trim().length === 0)
+      }
+
   }
 })();

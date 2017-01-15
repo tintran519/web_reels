@@ -19,6 +19,8 @@
     "lodash": "^3.10.1",
     "mongoose": "^4.1.1",
     "morgan": "~1.6.1",
+    "ng-repeat-owl-carousel": "0.0.2",
+    "owl.carousel": "^2.2.0",
     "request": "^2.79.0",
     "serve-favicon": "~2.3.0"
   }

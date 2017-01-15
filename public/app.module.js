@@ -1,5 +1,5 @@
 (function() {
-  angular.module('webReels', ["ui.router", "ui.bootstrap"])
+  angular.module('webReels', ["ui.router", "ui.bootstrap", "ocNgRepeat"])
 
     .config(function($httpProvider) {
 

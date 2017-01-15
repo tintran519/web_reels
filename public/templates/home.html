@@ -90,17 +90,19 @@
   <div class="contain movieList">
       <h3>Top Rated Movie Titles</h3>
     <div class="row movieList">
-      <div class="innerRow">
-        <div ng-repeat="movie in vm.topMovies" class="tile">
-            <div ng-click="vm.callToSelectedMovie('movie', movie,'topRated', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
-              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
-            </div>
+      <div class="innerRow owl-carousel owl-theme">
+
+        <div ng-repeat="movie in vm.topMovies" ng-if="movie.backdrop_path" class="tile">
+          <div ng-click="vm.callToSelectedMovie('movie', movie,'topRated', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
           <div class="tile__details">
             <div class="tileTitle">
               {{ movie.title }}
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -109,20 +111,19 @@
   <div class="contain movieList">
       <h3>Popular Movie Titles</h3>
     <div class="row movieList">
-      <div class="innerRow">
+      <div class="innerRow owl-carousel owl-theme">
 
-        <div ng-repeat="movie in vm.popularMovies" class="tile">
-          <div ng-if="movie.backdrop_path">
-            <div ng-click="vm.callToSelectedMovie('movie', movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
-              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
-            </div>
-            <div class="tile__details">
-              <div class="tileTitle">
-                {{ movie.title }}
-              </div>
+        <div ng-repeat="movie in vm.popularMovies" ng-if="movie.backdrop_path" class="tile">
+          <div ng-click="vm.callToSelectedMovie('movie', movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -131,9 +132,9 @@
   <div class="contain movieList">
       <h3>Recommended Movie Titles</h3>
     <div class="row movieList">
-      <div class="innerRow">
+      <div class="innerRow owl-carousel owl-theme">
 
-        <div ng-repeat="movie in vm.recommendedMovies" class="tile">
+        <div ng-repeat="movie in vm.recommendedMovies" ng-if="movie.backdrop_path" class="tile">
           <div ng-if="movie.backdrop_path">
             <div ng-click="vm.callToSelectedMovie('movie', movie, 'recommended', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
               <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
@@ -145,6 +146,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -153,9 +155,9 @@
     <div class="contain movieList">
         <h3>Popular Television Shows</h3>
       <div class="row movieList">
-        <div class="innerRow">
+        <div class="innerRow owl-carousel owl-theme">
 
-          <div ng-repeat="tv in vm.popularTv" class="tile">
+          <div ng-repeat="tv in vm.popularTv" ng-if="tv.backdrop_path" class="tile">
             <div ng-if="tv.backdrop_path">
               <div ng-click="vm.callToSelectedMovie('tv', tv, 'popular', tv.genre_ids[0])" ui-sref="showPage({media:'tv',id: tv.id})" class="tile__media">
                 <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ tv.backdrop_path }}' alt=""  />
@@ -167,10 +169,13 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
+
   </div>
 </div>
+
 
 

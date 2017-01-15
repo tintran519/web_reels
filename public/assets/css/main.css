@@ -3,7 +3,6 @@
 body {
   box-sizing: border-box;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-image: url('https://s-media-cache-ak0.pinimg.com/originals/0c/1b/54/0c1b541757e16d7c32736c0ec00d416f.jpg');*/
   background-size: cover;
   background-color: black;
   color: white;
@@ -158,6 +157,11 @@ body {
 
 .tileTitle {
   text-align: center;
+}
+
+.owl-prev {
+  background: royalblue;
+  color: white;
 }
 
 /*==================*/
