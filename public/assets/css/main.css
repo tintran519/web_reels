@@ -140,8 +140,21 @@ body {
 
 .row.movieList {
     overflow: scroll;
+/*    overflow-x: hidden;*/
     width: 100%;
 }
+
+/*.owl-carousel .owl-wrapper-outer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}*/
+
+/*::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}*/
 
 .innerRow {
     white-space: nowrap;

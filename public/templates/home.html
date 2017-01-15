@@ -90,8 +90,8 @@
   <div class="contain movieList">
       <h3>Top Rated Movie Titles</h3>
     <div class="row movieList">
-      <div class="innerRow">
-        <div ng-repeat="movie in vm.topMovies" class="tile">
+      <div class="innerRow owl-carousel owl-theme">
+        <div ng-repeat="movie in vm.topMovies | filter:{backdrop_path:'!!'}" class="tile">
             <div ng-click="vm.callToSelectedMovie('movie', movie,'topRated', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
               <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
             </div>
@@ -109,17 +109,15 @@
   <div class="contain movieList">
       <h3>Popular Movie Titles</h3>
     <div class="row movieList">
-      <div class="innerRow">
+      <div class="innerRow owl-carousel owl-theme">
 
-        <div ng-repeat="movie in vm.popularMovies" class="tile">
-          <div ng-if="movie.backdrop_path">
-            <div ng-click="vm.callToSelectedMovie('movie', movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
-              <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
-            </div>
-            <div class="tile__details">
-              <div class="tileTitle">
-                {{ movie.title }}
-              </div>
+      <div ng-repeat="movie in vm.popularMovies | filter:{backdrop_path:'!!'}" class="tile">
+          <div ng-click="vm.callToSelectedMovie('movie', movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
             </div>
           </div>
         </div>
@@ -170,7 +168,26 @@
         </div>
       </div>
     </div>
+<br><br><br>
+<!-- <div ng-controller="HomeController as home">
+  <div class="owl-carousel owl-theme">
+      <div ng-repeat="movie in home.recommendedMovies">
+        <div ng-if="movie.backdrop_path">
+          <div ng-click="home.callToSelectedMovie('movie', movie, 'recommended', movie.genre_ids[0])" ui-sref="showPage({media:'movie',id: movie.id})" class="tile__media">
+            <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
+          </div>
+          <div class="tile__details">
+            <div class="tileTitle">
+              {{ movie.title }}
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
+<br><br><br> -->
+  </div>
+</div>
+
 
 

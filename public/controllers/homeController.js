@@ -3,7 +3,7 @@
 
   angular
     .module('webReels')
-    .controller('HomeController', HomeController);
+    .controller('HomeController', HomeController)
 
     HomeController.$inject = ["$state", "userDataService", "$log", "$http","$window","movieService"]
 
@@ -19,13 +19,18 @@
 
       //Tv List
       vm.popularTv = [];
+      vm.test = 'blahh'
 
       //Invoke functions to display movies on home page
       getFeaturedMovies();
       getTopMovies();
       getPopularMovies();
       getRecommendedMovies();
-      getPopularTv();
+      getPopularTv()
+
+      setTimeout (function() {
+        owl();
+      },3000)
 
       function callToSelectedMovie(category, movie, type, genre){
         movieService.SelectedMovie = movie;
@@ -60,6 +65,7 @@
           return $http.get('/movie?topRated')
             .then(function(res) {
               vm.topMovies = res.data.results;
+              console.log('topMovies', vm.topMovies)
             }, function(err) {
               console.error('Error');
             })
@@ -69,6 +75,7 @@
           $http.get('/movie?popular')
             .then(function(res) {
               vm.popularMovies = res.data.results;
+              console.log('pop Movies', vm.popularMovies)
             }, function(err) {
               console.error('Error');
             })
@@ -97,5 +104,38 @@
             console.error('Error');
           })
       }
+
+        vm.carouselInitializer = function() {
+          $(".about-carousel").owlCarousel({
+            items: 3,
+            navigation: true,
+            pagination: false,
+            navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
+          });
+        };
+
+      function owl() {
+        $(".owl-carousel").owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:3
+              },
+              1000:{
+                  items:5
+              }
+            }
+        });
+      };
+
+      vm.notEmptyOrNull = function(item){
+        return !(item.name_fr === null || item.name_fr.trim().length === 0)
+      }
+
   }
 })();
