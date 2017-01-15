@@ -14,6 +14,7 @@ Once at the site, register for a free account and have fun exploring the databas
 ## Next Steps
 Additional features and functionalities must be added to this application in order to make it comparable to other movie databases on the net. The following list contains pending upgrades for the near future:
 
+* Implement a catch function to remove faulty poster paths from TMDB api calls
 * Add a rating button that links to TMDB's overall ratings for a film
 * Add a separate show page for profile images and information for cast of reel
 * Include additional information on a movie such as revenue in the about section

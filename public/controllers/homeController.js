@@ -19,7 +19,6 @@
 
       //Tv List
       vm.popularTv = [];
-      vm.test = 'blahh'
 
       //Invoke functions to display movies on home page
       getFeaturedMovies();
@@ -28,10 +27,12 @@
       getRecommendedMovies();
       getPopularTv()
 
+      //function for carousel; must set timeout to allow angular elements to load
       setTimeout (function() {
         owl();
       },3000)
 
+      //function to save info on selected movie on home screen & display on show page
       function callToSelectedMovie(category, movie, type, genre){
         movieService.SelectedMovie = movie;
         movieService.SelectedMovieType = type;
@@ -65,7 +66,6 @@
           return $http.get('/movie?topRated')
             .then(function(res) {
               vm.topMovies = res.data.results;
-              console.log('topMovies', vm.topMovies)
             }, function(err) {
               console.error('Error');
             })
@@ -75,7 +75,6 @@
           $http.get('/movie?popular')
             .then(function(res) {
               vm.popularMovies = res.data.results;
-              console.log('pop Movies', vm.popularMovies)
             }, function(err) {
               console.error('Error');
             })
@@ -105,20 +104,12 @@
           })
       }
 
-        vm.carouselInitializer = function() {
-          $(".about-carousel").owlCarousel({
-            items: 3,
-            navigation: true,
-            pagination: false,
-            navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"]
-          });
-        };
-
       function owl() {
         $(".owl-carousel").owlCarousel({
           loop:true,
-          margin:10,
-          nav:true,
+          margin:12,
+          nav:false,
+          dots:true,
           responsive:{
               0:{
                   items:1
@@ -133,8 +124,9 @@
         });
       };
 
+      //filter function to filter null values in api calls
       vm.notEmptyOrNull = function(item){
-        return !(item.name_fr === null || item.name_fr.trim().length === 0)
+        return !(item.backdrop_path === null || item.backdrop_path.trim().length === 0)
       }
 
   }

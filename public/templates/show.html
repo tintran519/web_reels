@@ -53,9 +53,9 @@
 <div class="contain movieList">
     <h3 class="showHeader">Related Reels</h3>
   <div class="row movieList">
-    <div class="innerRow">
+    <div class="innerRow owl-carousel owl-theme">
 
-      <div ng-repeat="movie in show.relatedInfo" class="tile">
+      <div ng-repeat="movie in show.relatedInfo" ng-if="movie.backdrop_path" class="tile">
         <div ng-if="movie.backdrop_path">
           <div ng-click="show.callToRelatedSelected(show.MediaCategory, movie,'popular', movie.genre_ids[0])" ui-sref="showPage({media:show.MediaCategory,id:movie.id})" class="tile__media">
             <img class="tile__img" ng-src='https://image.tmdb.org/t/p/w300/{{ movie.backdrop_path }}' alt=""  />
@@ -70,6 +70,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

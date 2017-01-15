@@ -3,7 +3,6 @@
 body {
   box-sizing: border-box;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-image: url('https://s-media-cache-ak0.pinimg.com/originals/0c/1b/54/0c1b541757e16d7c32736c0ec00d416f.jpg');*/
   background-size: cover;
   background-color: black;
   color: white;
@@ -140,21 +139,8 @@ body {
 
 .row.movieList {
     overflow: scroll;
-/*    overflow-x: hidden;*/
     width: 100%;
 }
-
-/*.owl-carousel .owl-wrapper-outer {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  z-index: 1;
-}*/
-
-/*::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}*/
 
 .innerRow {
     white-space: nowrap;
@@ -171,6 +157,11 @@ body {
 
 .tileTitle {
   text-align: center;
+}
+
+.owl-prev {
+  background: royalblue;
+  color: white;
 }
 
 /*==================*/

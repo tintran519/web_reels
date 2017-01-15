@@ -49,6 +49,11 @@
       //boolean to check if reel is in watchlist
       vm.alreadyInWatchList;
 
+      //function for carousel; must set timeout to allow angular elements to load
+      setTimeout (function() {
+        owl();
+      },3000)
+
       function getMovieInfo() {
         $http.get(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
           .then(function(res) {
@@ -116,5 +121,25 @@
       function parseTrailer(link){
         return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + link);
       }
+
+      function owl() {
+        $(".owl-carousel").owlCarousel({
+          loop:true,
+          margin:12,
+          nav:false,
+          dots:true,
+          responsive:{
+              0:{
+                  items:1
+              },
+              600:{
+                  items:3
+              },
+              1000:{
+                  items:5
+              }
+            }
+        });
+      };
     }
 })();
