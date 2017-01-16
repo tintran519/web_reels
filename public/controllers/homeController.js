@@ -25,12 +25,13 @@
       getTopMovies();
       getPopularMovies();
       getRecommendedMovies();
-      getPopularTv()
+      getPopularTv();
+
 
       //function for carousel; must set timeout to allow angular elements to load
       setTimeout (function() {
         owl();
-      },3000)
+      },3200)
 
       //function to save info on selected movie on home screen & display on show page
       function callToSelectedMovie(category, movie, type, genre){
@@ -66,6 +67,7 @@
           return $http.get('/movie?topRated')
             .then(function(res) {
               vm.topMovies = res.data.results;
+              console.log('topMovies', vm.topMovies);
             }, function(err) {
               console.error('Error');
             })
@@ -75,6 +77,7 @@
           $http.get('/movie?popular')
             .then(function(res) {
               vm.popularMovies = res.data.results;
+              console.log('popMovies', vm.popularMovies);
             }, function(err) {
               console.error('Error');
             })
@@ -85,9 +88,19 @@
             .then(function(res) {
               if(res.data.status_code === 34 || res.data.status_code === 11 || res.data.total_results === 0) {
                 getRecommendedMovies();
-              }
+              }else{
+              var sum = 0;
+              res.data.results.forEach(function(movie){
+                if (movie.backdrop_path) {
+                  sum += 1
+                }
+              })
+              console.log('sum for rec',sum);
+              if(sum < 5) {
+                getRecommendedMovies();
+              } else{
               vm.recommendedMovies = res.data.results;
-            }, function(err) {
+            }}}, function(err) {
               console.error('Error');
             })
       }
@@ -98,8 +111,19 @@
       function getPopularTv() {
         $http.get('/tv?popular')
           .then(function(res) {
+            var sum = 0;
+            res.data.results.forEach(function(movie){
+              if (movie.backdrop_path) {
+                sum += 1
+              }
+            })
+            console.log('sum for tv',sum);
+            if(sum < 5) {
+              getPopularTv();
+            } else {
             vm.popularTv = res.data.results;
-          }, function(err) {
+            console.log('popTv', vm.popularTv);
+          }}, function(err) {
             console.error('Error');
           })
       }
