@@ -52,7 +52,7 @@
       //function for carousel; must set timeout to allow angular elements to load
       setTimeout (function() {
         owl();
-      },3000)
+      },1500)
 
       function getMovieInfo() {
         $http.get(`/${vm.MediaCategory}?${vm.MovieCategory}[movieId]=${vm.MovieId}`)
