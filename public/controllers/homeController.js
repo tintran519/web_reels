@@ -31,7 +31,7 @@
       //function for carousel; must set timeout to allow angular elements to load
       setTimeout (function() {
         owl();
-      },3200)
+      },4000)
 
       //function to save info on selected movie on home screen & display on show page
       function callToSelectedMovie(category, movie, type, genre){

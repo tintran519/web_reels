@@ -5,11 +5,12 @@
     .module('webReels')
     .config(AppRouter);
 
-  AppRouter.$inject = ["$stateProvider", "$urlRouterProvider"];
+  AppRouter.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 
-  function AppRouter($stateProvider, $urlRouterProvider) {
+  function AppRouter($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/home');
+
 
     $stateProvider
       .state('homePage', {
@@ -32,6 +33,8 @@
         templateUrl: 'templates/watchList.html',
         controller: 'WatchListController as watch'
       })
+
+       $locationProvider.html5Mode({enabled: true,requireBase: false });
   }
 
 })();
