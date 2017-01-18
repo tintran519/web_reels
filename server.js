@@ -48,6 +48,12 @@ app.use(debugReq);
 // Defines all of our "dynamic" routes.
 app.use('/', routes);
 
+// Redirect all HTTP requests to <base> so Angular Router can process
+app.use('*',function(req,res,next){
+  var indexFile = path.resolve(__dirname,'./public/index.html');
+  res.sendFile(indexFile);
+})
+
 // Catches all 404 routes.
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
