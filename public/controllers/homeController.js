@@ -67,7 +67,6 @@
           return $http.get('/movie?topRated')
             .then(function(res) {
               vm.topMovies = res.data.results;
-              console.log('topMovies', vm.topMovies);
             }, function(err) {
               console.error('Error');
             })
@@ -77,7 +76,6 @@
           $http.get('/movie?popular')
             .then(function(res) {
               vm.popularMovies = res.data.results;
-              console.log('popMovies', vm.popularMovies);
             }, function(err) {
               console.error('Error');
             })
@@ -95,7 +93,6 @@
                   sum += 1
                 }
               })
-              console.log('sum for rec',sum);
               if(sum < 5) {
                 getRecommendedMovies();
               } else{
@@ -117,12 +114,10 @@
                 sum += 1
               }
             })
-            console.log('sum for tv',sum);
             if(sum < 5) {
               getPopularTv();
             } else {
             vm.popularTv = res.data.results;
-            console.log('popTv', vm.popularTv);
           }}, function(err) {
             console.error('Error');
           })
