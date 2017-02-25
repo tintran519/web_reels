@@ -9,11 +9,6 @@ var userSchema = new mongoose.Schema({
   email:  { type: String, required: true },
   password: { type: String, required: true, select: false },
   watchlist: []
-  // {
-  //   id: Number,
-  //   name: String,
-  //   image_url: String
-  // }
 });
 
 //exclude password
@@ -47,10 +42,6 @@ userSchema.methods.comparePassword = function(password) {
 
   return bcrypt.compareSync(password, user.password);
 };
-
-//put user's movie list here
-//{TO DO}
-
 
 var User = mongoose.model('User', userSchema);
 

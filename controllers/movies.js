@@ -6,7 +6,7 @@ const rootURLrelatedMovie = 'https://api.themoviedb.org/3/discover/movie?';
 const rootURLrelatedtv = 'https://api.themoviedb.org/3/discover/tv?';
 
 function movies (req, res) {
-  console.log(req.query)
+  console.log(req.query);
 
   switch(Object.keys(req.query)[0]) {
     case 'featured':

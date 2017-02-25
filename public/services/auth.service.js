@@ -18,7 +18,7 @@
 
       // return the promise object and its data
       return $http.post('/login', {
-        email:       email,//continue here
+        email:       email,
         password:    password
       })
         .success(function(data) {
